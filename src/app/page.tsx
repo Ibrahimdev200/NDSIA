@@ -273,10 +273,10 @@ export default function HomePage() {
               Proven Path
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#0f2b5c] dark:text-white tracking-tight">
-              A Proven Community Initiative
+              Opu-Nembe Youth Computer Training
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base font-medium">
-              We are not starting from scratch. NDSIA is the institutional scaling of a grassroots effort that successfully conducted four training batches (graduating 450 students) using volunteered resources.
+            <p className="text-slate-650 dark:text-slate-400 text-sm md:text-base font-medium">
+              We are not starting from scratch. NDSIA is the institutional scaling of the grassroots Opu-Nembe Youth Computer Training. Launched in 2025 by the **Peace Steering Committee of Opu-Nembe** under the leadership of Chairman **RTD former Vice Admiral Victor Ombu**, the initiative has successfully graduated **450+ students** using community-backed resources.
             </p>
           </div>
 

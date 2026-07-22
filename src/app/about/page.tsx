@@ -29,7 +29,7 @@ export default function AboutPage() {
             Empowering Minds & Transforming the Digital Landscape of Bayelsa State
           </h1>
           <p className="text-slate-650 dark:text-slate-350 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed font-medium">
-            Nembe Digital Skills & Innovation Academy (NDSIA) is a community-driven initiative dedicated to equipping young people and adults with modern digital skills leading to employment, entrepreneurship, and sustainable livelihoods.
+            Nembe Digital Skills & Innovation Academy (NDSIA) is built upon the foundation of the successful Opu-Nembe Youth Computer Training, an initiative organized in 2025 by the **Peace Steering Committee of Opu-Nembe** under the chairmanship of **RTD former Vice Admiral Victor Ombu**. NDSIA is dedicated to equipping young people and adults with modern digital skills leading to employment, entrepreneurship, and sustainable livelihoods.
           </p>
         </div>
       </section>

@@ -33,13 +33,13 @@ export default function OurStoryPage() {
             <div className="h-px bg-slate-200 dark:bg-slate-800 flex-grow" />
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0f2b5c] dark:text-white tracking-tight">
-            A Spark in the Riverine Delta
+            Origin of Opu-Nembe Youth Computer Training
           </h2>
           <p className="text-slate-650 dark:text-slate-350 leading-relaxed font-medium">
-            In early 2025, a few educators and tech enthusiasts observed a critical bottleneck: while smartphones were ubiquitous in Nembe, computer literacy was almost non-existent. Local youths and adults lacked the computer operation skills required to apply for digital services, operate standard office software, or write digital documents. Most had never even turned on a computer before.
+            The foundation of what is now NDSIA was laid in **2025**, organized and driven by the **Peace Steering Committee of Opu-Nembe**. Under the vision and leadership of the committee's Chairman, **RTD former Vice Admiral Victor Ombu**, the committee recognized a critical bottleneck: while smartphones were common, hands-on computer literacy was practically non-existent. Many local youths and adults had never even turned on a computer before, lacking the basic operation skills required for modern careers or administrative jobs.
           </p>
           <p className="text-slate-655 dark:text-slate-400 leading-relaxed text-sm font-medium">
-            With committed community support and volunteered resources, we established a temporary training academy. The curriculum focused on essential computer operations: how to turn on and navigate a computer, Microsoft Word, PowerPoint, Excel, how to search and browse the internet, and how to operate and print documents using a printer.
+            Determined to empower the community, RTD former Vice Admiral Victor Ombu and the Peace Steering Committee established the **Opu-Nembe Youth Computer Training** initiative. The program focused on absolute basics: turning on and navigating a system, typing, Microsoft Word, PowerPoint, Excel, safe internet searching, and physical document printing. This steering project became a massive success, training and graduating over **450 students** who are now doing exceptionally well.
           </p>
         </div>
 
