@@ -80,62 +80,62 @@ export interface Project {
 export const initialPrograms: Program[] = [
   {
     id: 'prog-1',
-    name: 'Basic Computer Operations',
-    duration: '4 Weeks',
-    skills: ['Starting & Shutting Down', 'Mouse & Keyboard Skills', 'Operating System Basics', 'File & Folder Management', 'System Setting Utilities'],
-    outcomes: 'Confidence in operating a personal computer from scratch, understanding basic digital systems.',
-    careerPaths: ['Office assistant', 'Administrative worker', 'Independent computer operator'],
+    name: 'Foundation Programme',
+    duration: '8 Weeks',
+    skills: ['Computer Operations', 'Internet Navigation', 'Word Processing', 'Spreadsheets', 'Basic Cybersecurity'],
+    outcomes: 'Digital Literacy Certification, preparation for professional digital roles.',
+    careerPaths: ['Office Administrator', 'Data Entry Specialist', 'Customer Support Associate'],
     objectives: [
-      'Learn how to properly power on, shut down, and restart a computer.',
-      'Master keyboard typing and mouse navigation skills.',
-      'Create, copy, move, rename, and delete files and folders cleanly.'
+      'Understand core computer hardware and software operations.',
+      'Perform standard office administrative tasks using office suites.',
+      'Develop safe internet browsing and digital communication habits.'
     ],
-    description: 'Designed for absolute beginners who have never touched or turned on a computer in their lives. We build basic familiarity, mouse coordination, typing confidence, and core system knowledge.',
+    description: 'Designed for absolute beginners. This programme takes individuals with zero computer knowledge and builds their foundational digital literacy and confidence, opening the door to further specialization.',
     category: 'foundation'
   },
   {
     id: 'prog-2',
-    name: 'Microsoft Office Productivity',
-    duration: '6 Weeks',
-    skills: ['Microsoft Word', 'Microsoft Excel', 'Microsoft PowerPoint', 'Formatting & Formulas', 'Data Entry & Spreadsheets'],
-    outcomes: 'Ability to create letters, calculations, tables, and presentation slide decks.',
-    careerPaths: ['Clerical Assistant', 'Office Secretary', 'Data Entry Operator', 'Store Record Keeper'],
+    name: 'Professional Tracks',
+    duration: '16 Weeks',
+    skills: ['Full-Stack Web Development', 'Data Analytics', 'Digital Marketing & Content Creation', 'UI/UX Product Design'],
+    outcomes: 'Industry-recognized portfolio, technical proficiency certification.',
+    careerPaths: ['Frontend Developer', 'Data Analyst', 'Social Media Manager', 'Junior UI/UX Designer'],
     objectives: [
-      'Write and format professional documents, letters, and resumes in Microsoft Word.',
-      'Build calculations, lists, tables, and basic charts in Microsoft Excel.',
-      'Design slide presentation decks using templates and formatting in Microsoft PowerPoint.'
+      'Build dynamic and responsive websites using modern HTML/CSS/React.',
+      'Analyze data sets to drive business decisions using Python and SQL.',
+      'Plan and execute multi-channel digital marketing campaigns.'
     ],
-    description: 'Master the standard office tools. Students learn how to write letters, manage invoices and inventory lists in spreadsheets, and build slides for community and business needs.',
+    description: 'Rigorous technical tracks designed to equip students with specialized, high-demand skills requested by regional and international employers.',
     category: 'professional'
   },
   {
     id: 'prog-3',
-    name: 'Internet & Search Literacy',
-    duration: '3 Weeks',
-    skills: ['Web Browsing', 'Search Engine Optimization', 'Email Management', 'Online Safety Basics', 'Digital Form Submission'],
-    outcomes: 'Independent online research capabilities, safe navigation, and email communication.',
-    careerPaths: ['Digital Support Clerk', 'Information Searcher', 'Online Service Operator'],
+    name: 'Career Accelerator',
+    duration: '6 Weeks',
+    skills: ['Resume Branding', 'Interview Preparation', 'Freelancing (Upwork/Fiverr)', 'Professional Ethics'],
+    outcomes: 'Job readiness portfolio, freelance setup, active job applications submitted.',
+    careerPaths: ['Global Remote Worker', 'Freelance Specialist', 'Corporate Professional'],
     objectives: [
-      'Navigate web browsers and perform smart searches on Google.',
-      'Create and manage professional email accounts to send attachments.',
-      'Fill and submit online application forms and understand safety basics.'
+      'Optimize professional profiles (LinkedIn, resumes, portfolio website).',
+      'Establish a freelance footprint and bid for global contracts.',
+      'Navigate interview processes and contract negotiations with confidence.'
     ],
-    description: 'Open the gate to the web. Students learn to browse safely, identify scams, send emails with attachments, perform google research, and submit online forms.',
+    description: 'Bridges the gap between technical skills and employment. We guide graduates through job searches, interview coaching, and setting up international freelance accounts.',
     category: 'accelerator'
   },
   {
     id: 'prog-4',
-    name: 'Printing & Document Utilities',
-    duration: '3 Weeks',
-    skills: ['Printer Setup', 'Print Settings', 'Scanning & Copies', 'Hardware Connections', 'Basic Maintenance'],
-    outcomes: 'Full competency in printing documents, scanning, and managing office equipment.',
-    careerPaths: ['Business Center Operator', 'Office Document Clerk', 'Printing Assistant'],
+    name: 'Innovation & Entrepreneurship Lab',
+    duration: 'Continuous',
+    skills: ['Design Thinking', 'Business Modeling', 'Pitching', 'Agile Product Development'],
+    outcomes: 'Functional MVP (Minimum Viable Product), business registration, pitch deck.',
+    careerPaths: ['Tech Founder', 'Product Manager', 'Social Entrepreneur'],
     objectives: [
-      'Connect computers to printers and run print tests.',
-      'Configure print settings like double-sided, color, margins, and paper sizes.',
-      'Scan physical documents to digital PDF files and make physical copies.'
+      'Identify local challenges and design digital products to address them.',
+      'Build sustainable business plans and secure seed funding.',
+      'Launch scalable startups that employ community youth.'
     ],
-    description: 'Practical training on operating printing machines. Students learn how to connect computers to printers, scan documents, adjust print settings, and manage office paper assets.',
+    description: 'An incubator for ideas. We provide mentorship, internet access, electricity, and seed grants to help alumni build tech-enabled startups solving real-world challenges in the Niger Delta.',
     category: 'innovation'
   }
 ];
