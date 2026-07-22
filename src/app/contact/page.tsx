@@ -62,8 +62,8 @@ export default function ContactPage() {
               <MapPin className="h-6 w-6 text-emerald-500 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-bold text-slate-900 dark:text-white">Academy Hub</h4>
-                <p className="text-slate-500 dark:text-slate-400 mt-1">
-                  Opposite Town Hall, Bassambiri, Nembe LGA, Bayelsa State, Nigeria.
+                <p className="text-slate-500 dark:text-slate-400 mt-1 font-semibold">
+                  Government Craft and Development Center, Bassambiri, Bayelsa State, Nigeria.
                 </p>
               </div>
             </div>
@@ -71,11 +71,9 @@ export default function ContactPage() {
             <div className="flex gap-4 p-4 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-2xl">
               <Mail className="h-5 w-5 text-emerald-500 flex-shrink-0 mt-0.5" />
               <div>
-                <h4 className="font-bold text-slate-900 dark:text-white">Email Channels</h4>
+                <h4 className="font-bold text-slate-900 dark:text-white">Email Address</h4>
                 <p className="text-slate-500 dark:text-slate-450 mt-1">
-                  General: <a href="mailto:info@ndsia.org.ng" className="text-[#0f2b5c] dark:text-blue-400 font-bold hover:underline">info@ndsia.org.ng</a>
-                  <br />
-                  Sponsorships: <a href="mailto:grants@ndsia.org.ng" className="text-[#0f2b5c] dark:text-blue-400 font-bold hover:underline">grants@ndsia.org.ng</a>
+                  General Inquiry: <a href="mailto:infondsia@outlook.com" className="text-[#0f2b5c] dark:text-blue-400 font-bold hover:underline">infondsia@outlook.com</a>
                 </p>
               </div>
             </div>
@@ -83,9 +81,17 @@ export default function ContactPage() {
             <div className="flex gap-4 p-4 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-2xl">
               <Phone className="h-5 w-5 text-emerald-500 flex-shrink-0 mt-0.5" />
               <div>
-                <h4 className="font-bold text-slate-900 dark:text-white">Telephone Support</h4>
-                <p className="text-slate-500 dark:text-slate-400 mt-1">
-                  Office Hours: +234 (0) 800 000 63742
+                <h4 className="font-bold text-slate-900 dark:text-white">Telephone & WhatsApp</h4>
+                <p className="text-slate-500 dark:text-slate-400 mt-1 font-semibold flex flex-wrap gap-2 items-center">
+                  <span>+234 (0) 807 406 2750</span>
+                  <a 
+                    href="https://wa.me/2348074062750" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center gap-1 text-xs bg-emerald-500 hover:bg-emerald-600 text-white px-2 py-0.5 rounded-full font-bold transition-transform active:scale-95 shadow-sm"
+                  >
+                    Chat on WhatsApp
+                  </a>
                 </p>
               </div>
             </div>

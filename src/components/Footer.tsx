@@ -180,23 +180,21 @@ export const Footer: React.FC = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-emerald-500 flex-shrink-0 mt-0.5" />
                 <span>
-                  Nembe Digital Skills Hub,
+                  Government Craft and Development Center,
                   <br />
-                  Opposite Town Hall, Bassambiri,
-                  <br />
-                  Nembe LGA, Bayelsa State, Nigeria.
+                  Bassambiri, Bayelsa State, Nigeria.
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-emerald-500 flex-shrink-0" />
-                <a href="mailto:info@ndsia.org.ng" className="hover:text-white transition-colors">
-                  info@ndsia.org.ng
+                <a href="mailto:infondsia@outlook.com" className="hover:text-white transition-colors">
+                  infondsia@outlook.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-emerald-500 flex-shrink-0" />
-                <a href="tel:+23480000NDSIA" className="hover:text-white transition-colors">
-                  +234 (0) 800 000 63742
+                <a href="tel:+2348074062750" className="hover:text-white transition-colors">
+                  +234 (0) 807 406 2750
                 </a>
               </li>
             </ul>
