@@ -236,18 +236,18 @@ export default function HomePage() {
             <div className="lg:col-span-6 grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800">
-                  <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&auto=format&fit=crop&q=80" alt="Students collaboration" className="object-cover w-full h-full" />
+                  <img src="/group-students-1.jpg" alt="Students collaboration" className="object-cover w-full h-full" />
                 </div>
                 <div className="aspect-square rounded-3xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800">
-                  <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&auto=format&fit=crop&q=80" alt="Active laboratory session" className="object-cover w-full h-full" />
+                  <img src="/group-students-2.jpg" alt="Active laboratory session" className="object-cover w-full h-full" />
                 </div>
               </div>
               <div className="space-y-4 pt-8">
                 <div className="aspect-square rounded-3xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800">
-                  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&auto=format&fit=crop&q=80" alt="Graduates celebrating" className="object-cover w-full h-full" />
+                  <img src="/graduates-hall.jpg" alt="Graduates celebrating" className="object-cover w-full h-full" />
                 </div>
                 <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800">
-                  <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&auto=format&fit=crop&q=80" alt="Mentorship one-on-one" className="object-cover w-full h-full" />
+                  <img src="/graduates-backdrop-1.jpg" alt="Mentorship one-on-one" className="object-cover w-full h-full" />
                 </div>
               </div>
             </div>
