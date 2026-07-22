@@ -80,62 +80,62 @@ export interface Project {
 export const initialPrograms: Program[] = [
   {
     id: 'prog-1',
-    name: 'Foundation Programme',
-    duration: '8 Weeks',
-    skills: ['Computer Operations', 'Internet Navigation', 'Word Processing', 'Spreadsheets', 'Basic Cybersecurity'],
-    outcomes: 'Digital Literacy Certification, preparation for professional digital roles.',
-    careerPaths: ['Office Administrator', 'Data Entry Specialist', 'Customer Support Associate'],
+    name: 'Basic Computer Operations',
+    duration: '4 Weeks',
+    skills: ['Starting & Shutting Down', 'Mouse & Keyboard Skills', 'Operating System Basics', 'File & Folder Management', 'System Setting Utilities'],
+    outcomes: 'Confidence in operating a personal computer from scratch, understanding basic digital systems.',
+    careerPaths: ['Office assistant', 'Administrative worker', 'Independent computer operator'],
     objectives: [
-      'Understand core computer hardware and software operations.',
-      'Perform standard office administrative tasks using office suites.',
-      'Develop safe internet browsing and digital communication habits.'
+      'Learn how to properly power on, shut down, and restart a computer.',
+      'Master keyboard typing and mouse navigation skills.',
+      'Create, copy, move, rename, and delete files and folders cleanly.'
     ],
-    description: 'Designed for absolute beginners. This programme takes individuals with zero computer knowledge and builds their foundational digital literacy and confidence, opening the door to further specialization.',
+    description: 'Designed for absolute beginners who have never touched or turned on a computer in their lives. We build basic familiarity, mouse coordination, typing confidence, and core system knowledge.',
     category: 'foundation'
   },
   {
     id: 'prog-2',
-    name: 'Professional Tracks',
-    duration: '16 Weeks',
-    skills: ['Full-Stack Web Development', 'Data Analytics', 'Digital Marketing & Content Creation', 'UI/UX Product Design'],
-    outcomes: 'Industry-recognized portfolio, technical proficiency certification.',
-    careerPaths: ['Frontend Developer', 'Data Analyst', 'Social Media Manager', 'Junior UI/UX Designer'],
+    name: 'Microsoft Office Productivity',
+    duration: '6 Weeks',
+    skills: ['Microsoft Word', 'Microsoft Excel', 'Microsoft PowerPoint', 'Formatting & Formulas', 'Data Entry & Spreadsheets'],
+    outcomes: 'Ability to create letters, calculations, tables, and presentation slide decks.',
+    careerPaths: ['Clerical Assistant', 'Office Secretary', 'Data Entry Operator', 'Store Record Keeper'],
     objectives: [
-      'Build dynamic and responsive websites using modern HTML/CSS/React.',
-      'Analyze data sets to drive business decisions using Python and SQL.',
-      'Plan and execute multi-channel digital marketing campaigns.'
+      'Write and format professional documents, letters, and resumes in Microsoft Word.',
+      'Build calculations, lists, tables, and basic charts in Microsoft Excel.',
+      'Design slide presentation decks using templates and formatting in Microsoft PowerPoint.'
     ],
-    description: 'Rigorous technical tracks designed to equip students with specialized, high-demand skills requested by regional and international employers.',
+    description: 'Master the standard office tools. Students learn how to write letters, manage invoices and inventory lists in spreadsheets, and build slides for community and business needs.',
     category: 'professional'
   },
   {
     id: 'prog-3',
-    name: 'Career Accelerator',
-    duration: '6 Weeks',
-    skills: ['Resume Branding', 'Interview Preparation', 'Freelancing (Upwork/Fiverr)', 'Professional Ethics'],
-    outcomes: 'Job readiness portfolio, freelance setup, active job applications submitted.',
-    careerPaths: ['Global Remote Worker', 'Freelance Specialist', 'Corporate Professional'],
+    name: 'Internet & Search Literacy',
+    duration: '3 Weeks',
+    skills: ['Web Browsing', 'Search Engine Optimization', 'Email Management', 'Online Safety Basics', 'Digital Form Submission'],
+    outcomes: 'Independent online research capabilities, safe navigation, and email communication.',
+    careerPaths: ['Digital Support Clerk', 'Information Searcher', 'Online Service Operator'],
     objectives: [
-      'Optimize professional profiles (LinkedIn, resumes, portfolio website).',
-      'Establish a freelance footprint and bid for global contracts.',
-      'Navigate interview processes and contract negotiations with confidence.'
+      'Navigate web browsers and perform smart searches on Google.',
+      'Create and manage professional email accounts to send attachments.',
+      'Fill and submit online application forms and understand safety basics.'
     ],
-    description: 'Bridges the gap between technical skills and employment. We guide graduates through job searches, interview coaching, and setting up international freelance accounts.',
+    description: 'Open the gate to the web. Students learn to browse safely, identify scams, send emails with attachments, perform google research, and submit online forms.',
     category: 'accelerator'
   },
   {
     id: 'prog-4',
-    name: 'Innovation & Entrepreneurship Lab',
-    duration: 'Continuous',
-    skills: ['Design Thinking', 'Business Modeling', 'Pitching', 'Agile Product Development'],
-    outcomes: 'Functional MVP (Minimum Viable Product), business registration, pitch deck.',
-    careerPaths: ['Tech Founder', 'Product Manager', 'Social Entrepreneur'],
+    name: 'Printing & Document Utilities',
+    duration: '3 Weeks',
+    skills: ['Printer Setup', 'Print Settings', 'Scanning & Copies', 'Hardware Connections', 'Basic Maintenance'],
+    outcomes: 'Full competency in printing documents, scanning, and managing office equipment.',
+    careerPaths: ['Business Center Operator', 'Office Document Clerk', 'Printing Assistant'],
     objectives: [
-      'Identify local challenges and design digital products to address them.',
-      'Build sustainable business plans and secure seed funding.',
-      'Launch scalable startups that employ community youth.'
+      'Connect computers to printers and run print tests.',
+      'Configure print settings like double-sided, color, margins, and paper sizes.',
+      'Scan physical documents to digital PDF files and make physical copies.'
     ],
-    description: 'An incubator for ideas. We provide mentorship, internet access, electricity, and seed grants to help alumni build tech-enabled startups solving real-world challenges in the Niger Delta.',
+    description: 'Practical training on operating printing machines. Students learn how to connect computers to printers, scan documents, adjust print settings, and manage office paper assets.',
     category: 'innovation'
   }
 ];
@@ -144,30 +144,30 @@ export const initialSuccessStories: SuccessStory[] = [
   {
     id: 'story-1',
     name: 'Tari Ella',
-    cohort: 'Cohort 2 Graduate',
-    roleBefore: 'Unemployed High School Graduate',
-    roleAfter: 'Frontend Developer',
-    story: 'Before joining NDSIA, Tari had never touched a computer. Through the Foundation and Professional Web Development courses, she learned coding. Today, she works remotely for a fintech agency and leads coding workshops for local girls.',
+    cohort: 'Batch 2 Graduate',
+    roleBefore: 'Petty Retail Seller / Unemployed',
+    roleAfter: 'Office Secretary',
+    story: 'Before joining NDSIA, Tari had never turned on a computer in her life. Through the training, she mastered Microsoft Word, PowerPoint, Excel, and printing. Today, she works as a school secretary managing computer records with confidence.',
     image: '/graduates-backdrop-1.jpg',
-    company: 'PayFlex Africa'
+    company: 'Nembe Model School'
   },
   {
     id: 'story-2',
     name: 'Ebi Joseph',
-    cohort: 'Cohort 1 Graduate',
-    roleBefore: 'Petty Trader / Retail Assistant',
-    roleAfter: 'Founder & Managing Director',
-    story: 'Ebi learned digital marketing and office systems. Realizing the gap in local logistics services, he started a tech-enabled delivery agency. He now manages a team of five and handles local delivery for Bayelsa merchants.',
+    cohort: 'Batch 1 Graduate',
+    roleBefore: 'High School Graduate / Petty Trader',
+    roleAfter: 'Business Center Manager',
+    story: 'Ebi started with zero computer experience. He learned spreadsheets, printing operations, and internet usage. He has now set up a local business center that handles printing, typing, and document scans for community residents.',
     image: '/group-students-1.jpg',
-    company: 'Nembe Express Courier'
+    company: 'Nembe Digital Services'
   },
   {
     id: 'story-3',
     name: 'Boma Harrison',
-    cohort: 'Cohort 3 Graduate',
-    roleBefore: 'Junior School Teacher',
-    roleAfter: 'ICT Coordinator & Database Admin',
-    story: 'Boma entered the data analytics track to upskill. He was quickly promoted to ICT coordinator at his educational institution, modernizing their record system and training fellow teachers in spreadsheet management.',
+    cohort: 'Batch 3 Graduate',
+    roleBefore: 'Primary School Teacher',
+    roleAfter: 'School ICT Coordinator',
+    story: 'Boma upskilled in Microsoft Office suite and internet search. He was promoted to ICT coordinator at his educational institution, modernizing their record system and training fellow teachers in document formatting and basic spreadsheet calculations.',
     image: '/group-students-2.jpg'
   }
 ];
@@ -175,9 +175,9 @@ export const initialSuccessStories: SuccessStory[] = [
 export const initialNews: NewsArticle[] = [
   {
     id: 'news-1',
-    title: 'NDSIA Cohort 4 Celebrates 85% Post-Graduation Employment Rate',
-    excerpt: 'Our recently concluded cohort of 120 students shows record-breaking outcomes in local placements and digital freelance work.',
-    content: 'We are incredibly proud to publish the outcomes of our fourth community cohort. Through direct partnerships with Bayelsa businesses and global freelancing programs, over 85% of graduates have secured full-time roles or consistent freelance projects within 90 days of graduation. The graduation ceremony was attended by community leaders and youth advocates.',
+    title: 'NDSIA Batch 4 Celebrates Successful Digital Literacy Graduation',
+    excerpt: 'Our recently concluded Batch 4 of 100 students shows record-breaking outcomes in local administrative placements and office work.',
+    content: 'We are incredibly proud to publish the outcomes of our fourth community training batch. Over 85% of Batch 4 graduates (representing 100 students trained in Microsoft Word, PowerPoint, Excel, Internet operations, and physical printing) have successfully transitioned into administrative roles, secretary placements, and computer center operator jobs in Bayelsa. The graduation ceremony was celebrated by local chiefs, community leaders, and proud parents.',
     date: '2026-06-15',
     image: '/news-classroom-1.jpg',
     author: 'Precious Alagoa'

@@ -276,7 +276,7 @@ export default function HomePage() {
               A Proven Community Initiative
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base font-medium">
-              We are not starting from scratch. NDSIA is the institutional scaling of a grassroots effort that successfully conducted four training cohorts using volunteered resources.
+              We are not starting from scratch. NDSIA is the institutional scaling of a grassroots effort that successfully conducted four training batches (graduating 450 students) using volunteered resources.
             </p>
           </div>
 
@@ -285,10 +285,10 @@ export default function HomePage() {
             <div className="hidden md:block absolute top-[50px] left-[12.5%] right-[12.5%] h-1 bg-slate-250 dark:bg-slate-800 -z-10" />
 
             {[
-              { year: '2023', title: 'The Spark', desc: 'Volunteers set up 10 computers in a community room to teach 30 students basic typing and Excel.' },
-              { year: '2024', title: 'Cohort 2 & 3', desc: 'Successfully expanded to web design, graduating 140+ students with a 65% immediate employment rate.' },
-              { year: '2025', title: 'Cohort 4 Scale', desc: 'Graduated 120 students in professional tracks, launching freelancing programs with high-speed internet.' },
-              { year: '2026', title: 'Building NDSIA', desc: 'Establishing a permanent Academy campus to reach thousands of learners across Bayelsa State.' }
+              { year: '2025', title: 'Batches 1 & 2', desc: 'Launched academy. Trained 200 students (100 in Batch 1, 100 in Batch 2) in basic computers, Microsoft Word, PowerPoint, Excel, and printing.' },
+              { year: '2025', title: 'Batch 3 Scaling', desc: 'Scaled classrooms to train 150 students in Batch 3, expanding basic computer operations, typing, and internet research.' },
+              { year: '2026', title: 'Batch 4 Intake', desc: 'Trained 100 students in Batch 4, bringing the cumulative total of digital empowerment graduates to 450.' },
+              { year: '2026+', title: 'Future Academy', desc: 'Constructing a permanent campus structure to offer standard digital empowerment to thousands across Bayelsa.' }
             ].map((step, idx) => (
               <motion.div 
                 key={step.year} 
@@ -446,7 +446,7 @@ export default function HomePage() {
             Sponsor a Student. Transform a Life.
           </h2>
           <p className="text-blue-200 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
-            100% of your donation directly funds student laptops, electricity, satellite internet access, and training resources. Help us expand from 120 to 500 students in the next cohort.
+            100% of your donation directly funds student laptops, electricity, satellite internet access, and training resources. Help us expand from 100 to 300 students in the next cohort.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
             <Link

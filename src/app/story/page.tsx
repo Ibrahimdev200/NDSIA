@@ -35,11 +35,11 @@ export default function OurStoryPage() {
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0f2b5c] dark:text-white tracking-tight">
             A Spark in the Riverine Delta
           </h2>
-          <p className="text-slate-600 dark:text-slate-350 leading-relaxed font-medium">
-            In early 2023, a few educators and tech enthusiasts observed a critical bottleneck: while smartphones were ubiquitous in Nembe, computer literacy was almost non-existent. Local youths graduating high school lacked the computer operation skills required to apply for college programs, operate standard office software, or write digital resumes.
+          <p className="text-slate-650 dark:text-slate-350 leading-relaxed font-medium">
+            In early 2025, a few educators and tech enthusiasts observed a critical bottleneck: while smartphones were ubiquitous in Nembe, computer literacy was almost non-existent. Local youths and adults lacked the computer operation skills required to apply for digital services, operate standard office software, or write digital documents. Most had never even turned on a computer before.
           </p>
-          <p className="text-slate-650 dark:text-slate-450 leading-relaxed text-sm font-medium">
-            With zero external funding and only ten donated desktop computers, the organizers established a temporary classroom. We set out to teach 30 students the absolute basics: how to turn on a computer, type, navigate the desktop, and perform data entry. The response was overwhelming; over 150 applicants applied for those 30 seats, proving a deep hunger for knowledge.
+          <p className="text-slate-655 dark:text-slate-400 leading-relaxed text-sm font-medium">
+            With committed community support and volunteered resources, we established a temporary training academy. The curriculum focused on essential computer operations: how to turn on and navigate a computer, Microsoft Word, PowerPoint, Excel, how to search and browse the internet, and how to operate and print documents using a printer.
           </p>
         </div>
 
@@ -50,22 +50,22 @@ export default function OurStoryPage() {
             <div className="h-px bg-slate-200 dark:bg-slate-800 flex-grow" />
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0f2b5c] dark:text-white tracking-tight">
-            Proof of Concept: Four Cohorts Graduated
+            Proof of Concept: 4 Batches, 450 Graduates
           </h2>
-          <p className="text-slate-600 dark:text-slate-350 leading-relaxed font-medium">
-            What started as a trial quickly transformed into a structured community mission. Recognizing the students' capacity, we expanded the curriculum:
+          <p className="text-slate-650 dark:text-slate-350 leading-relaxed font-medium">
+            What started as a trial quickly transformed into a structured community mission. Across 2025 and 2026, we have successfully run four training batches:
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 space-y-2">
-              <h4 className="font-extrabold text-[#0f2b5c] dark:text-blue-400">Cohort 1 & 2</h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                Focused on basic office applications and internet safety. Graduated 90 students who went on to secure data entry and administrative roles in local schools and microfinance institutions.
+              <h4 className="font-extrabold text-[#0f2b5c] dark:text-blue-400">2025 Batches (1, 2, & 3)</h4>
+              <p className="text-xs text-slate-550 dark:text-slate-400 leading-relaxed">
+                Trained three batches in 2025. **Batch 1** trained 100 students, **Batch 2** trained 100 students, and **Batch 3** scaled up to train 150 students. All graduates achieved confidence in basic operating systems, typing, Office suites, internet search, and printer management.
               </p>
             </div>
             <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 space-y-2">
-              <h4 className="font-extrabold text-emerald-600 dark:text-emerald-400">Cohort 3 & 4</h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                Introduced frontend web coding, data analytics, and digital marketing. Graduated 360 students. Students configured online freelancing profiles, earning remote income directly from international clients.
+              <h4 className="font-extrabold text-emerald-600 dark:text-emerald-400">2026 Batch (4)</h4>
+              <p className="text-xs text-slate-550 dark:text-slate-400 leading-relaxed">
+                Trained **Batch 4** in 2026, adding another 100 students to the alumni list. This brings the cumulative total of digital literacy graduates trained by the academy to **450 students** who are now doing exceptionally well.
               </p>
             </div>
           </div>
