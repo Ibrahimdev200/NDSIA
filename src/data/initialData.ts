@@ -148,7 +148,7 @@ export const initialSuccessStories: SuccessStory[] = [
     roleBefore: 'Unemployed High School Graduate',
     roleAfter: 'Frontend Developer',
     story: 'Before joining NDSIA, Tari had never touched a computer. Through the Foundation and Professional Web Development courses, she learned coding. Today, she works remotely for a fintech agency and leads coding workshops for local girls.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop&q=80',
+    image: '/graduates-backdrop-1.jpg',
     company: 'PayFlex Africa'
   },
   {
@@ -158,7 +158,7 @@ export const initialSuccessStories: SuccessStory[] = [
     roleBefore: 'Petty Trader / Retail Assistant',
     roleAfter: 'Founder & Managing Director',
     story: 'Ebi learned digital marketing and office systems. Realizing the gap in local logistics services, he started a tech-enabled delivery agency. He now manages a team of five and handles local delivery for Bayelsa merchants.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80',
+    image: '/group-students-1.jpg',
     company: 'Nembe Express Courier'
   },
   {
@@ -168,7 +168,7 @@ export const initialSuccessStories: SuccessStory[] = [
     roleBefore: 'Junior School Teacher',
     roleAfter: 'ICT Coordinator & Database Admin',
     story: 'Boma entered the data analytics track to upskill. He was quickly promoted to ICT coordinator at his educational institution, modernizing their record system and training fellow teachers in spreadsheet management.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80'
+    image: '/group-students-2.jpg'
   }
 ];
 
@@ -179,7 +179,7 @@ export const initialNews: NewsArticle[] = [
     excerpt: 'Our recently concluded cohort of 120 students shows record-breaking outcomes in local placements and digital freelance work.',
     content: 'We are incredibly proud to publish the outcomes of our fourth community cohort. Through direct partnerships with Bayelsa businesses and global freelancing programs, over 85% of graduates have secured full-time roles or consistent freelance projects within 90 days of graduation. The graduation ceremony was attended by community leaders and youth advocates.',
     date: '2026-06-15',
-    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&auto=format&fit=crop&q=80',
+    image: '/graduates-hall.jpg',
     author: 'Precious Alagoa'
   },
   {
@@ -188,7 +188,7 @@ export const initialNews: NewsArticle[] = [
     excerpt: 'A donation of high-speed satellite hardware and 40 workstations will double our student capacity for the upcoming intake.',
     content: 'Through a newly formed agreement with the Regional Digital Alliance, the Academy will receive major infrastructure upgrades. This includes state-of-the-art satellite internet terminal setups and forty high-end workstations. These improvements will allow us to double classroom sizes for our next cohort, starting in September.',
     date: '2026-07-02',
-    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&auto=format&fit=crop&q=80',
+    image: '/hero-classroom.jpg',
     author: 'Tari Ella'
   }
 ];

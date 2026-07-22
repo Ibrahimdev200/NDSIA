@@ -156,7 +156,7 @@ export default function HomePage() {
               {/* Using high-quality placeholder styling with a premium gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-emerald-600/40 via-blue-900/60 to-orange-500/30 z-10" />
               <img
-                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&auto=format&fit=crop&q=80"
+                src="/hero-classroom.jpg"
                 alt="NDSIA Classroom in Session"
                 className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-700"
               />

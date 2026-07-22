@@ -6,12 +6,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Mock Gallery Database (supported by admin CMS upload mock)
 const defaultPhotos = [
-  { id: '1', title: 'Cohort 4 Web Development Lecture', category: 'classrooms', url: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&auto=format&fit=crop&q=80', description: 'Students learning JS syntax in the tech lab.' },
-  { id: '2', title: 'Cohort 3 Graduation Celebration', category: 'graduation', url: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop&q=80', description: 'Over 100 students celebrated their certifications.' },
+  { id: '1', title: 'Cohort 4 Web Development Lecture', category: 'classrooms', url: '/hero-classroom.jpg', description: 'Students learning JS syntax in the tech lab.' },
+  { id: '2', title: 'Cohort 3 Graduation Celebration', category: 'graduation', url: '/graduates-hall.jpg', description: 'Over 100 students celebrated their certifications.' },
   { id: '3', title: 'Independent Solar Energy Array', category: 'infrastructure', url: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80', description: 'Solar integration backup to prevent blackouts.' },
-  { id: '4', title: 'Collaboration Workshop Session', category: 'workshops', url: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&q=80', description: 'Graduates building portfolios in groups.' },
-  { id: '5', title: 'Hands-on Hardware Assembly', category: 'classrooms', url: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&auto=format&fit=crop&q=80', description: 'Learning core components of workstation builds.' },
-  { id: '6', title: 'Cohort 4 Certificate Distribution', category: 'graduation', url: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&auto=format&fit=crop&q=80', description: 'Top placement students receiving special honors.' }
+  { id: '4', title: 'Collaboration Workshop Session', category: 'workshops', url: '/group-students-1.jpg', description: 'Graduates building portfolios in groups.' },
+  { id: '5', title: 'Group Practice Lab Work', category: 'workshops', url: '/group-students-2.jpg', description: 'Sharing workstation practices and assignments.' },
+  { id: '6', title: 'Cohort 4 Certificate Distribution', category: 'graduation', url: '/graduates-backdrop-1.jpg', description: 'Top placement students receiving special honors.' }
 ];
 
 export default function GalleryPage() {
