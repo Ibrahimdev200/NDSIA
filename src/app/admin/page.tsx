@@ -168,6 +168,13 @@ export default function AdminPage() {
     setShowModal(false);
   };
 
+  const handleResetDatabase = () => {
+    if (confirm('Warning: This will clear all modifications you have made in the CMS and restore the default database including your newly uploaded classroom images. Are you sure?')) {
+      localStorage.clear();
+      window.location.reload();
+    }
+  };
+
   return (
     <div className="flex min-h-[80vh] bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-200">
       
@@ -223,15 +230,23 @@ export default function AdminPage() {
             <p className="text-xs text-slate-400 mt-1">Updates made here directly modify local state and render in user-facing pages.</p>
           </div>
           
-          {activeTab !== 'overview' && activeTab !== 'students' && (
+          <div className="flex gap-3 flex-wrap">
             <button
-              onClick={triggerAdd}
-              className="flex items-center gap-1.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 text-xs font-bold shadow transition-transform active:scale-95"
+              onClick={handleResetDatabase}
+              className="flex items-center gap-1.5 rounded-full border border-red-200 dark:border-red-900 bg-red-50 hover:bg-red-100 dark:bg-red-950/20 text-red-650 px-5 py-2.5 text-xs font-bold shadow-sm transition-transform active:scale-95 cursor-pointer"
             >
-              <Plus className="h-4 w-4" />
-              Add Record
+              Reset Database to Defaults
             </button>
-          )}
+            {activeTab !== 'overview' && activeTab !== 'students' && (
+              <button
+                onClick={triggerAdd}
+                className="flex items-center gap-1.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 text-xs font-bold shadow transition-transform active:scale-95 cursor-pointer"
+              >
+                <Plus className="h-4 w-4" />
+                Add Record
+              </button>
+            )}
+          </div>
         </div>
 
         {/* A. OVERVIEW VIEW */}
