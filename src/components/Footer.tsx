@@ -76,23 +76,7 @@ export const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="inline-block">
-              {/* Force clean white text/layout on dark footer */}
-              <div className="flex items-center gap-3 select-none">
-                <div className="h-12 w-12 bg-white rounded-xl flex items-center justify-center p-1">
-                  <span className="text-xl font-black text-slate-950">N</span>
-                </div>
-                <div className="flex flex-col justify-center">
-                  <h1 className="text-xl font-black tracking-tight leading-none text-white">
-                    NEMBE
-                  </h1>
-                  <p className="text-[10px] font-bold tracking-widest text-emerald-400 uppercase leading-none mt-0.5">
-                    Digital Skills & Innovation
-                  </p>
-                  <span className="text-[9px] font-black px-1.5 py-0.5 bg-emerald-500 text-white rounded tracking-wider leading-none mt-1 w-max">
-                    NDSIA
-                  </span>
-                </div>
-              </div>
+              <NDSIALogo className="h-14 sm:h-16" />
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
               "Empowering People. Transforming Communities. Building the Future." NDSIA is a community-driven initiative delivering world-class tech education to Bayelsa State.
