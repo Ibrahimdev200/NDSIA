@@ -237,107 +237,32 @@ export default function ProgramsPage() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl relative"
+              className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-3xl max-w-md w-full p-8 shadow-2xl relative text-center space-y-6"
             >
-              <h3 className="text-2xl font-extrabold text-[#0f2b5c] dark:text-white tracking-tight leading-tight">
-                Apply for Admission
-              </h3>
-              <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mt-1.5">
-                {selectedProgramName} (Tuition-Free)
+              <div className="w-16 h-16 rounded-full bg-orange-100 text-orange-605 dark:bg-orange-950/40 dark:text-orange-400 flex items-center justify-center mx-auto animate-pulse">
+                <Clock className="h-8 w-8" />
+              </div>
+              
+              <div className="space-y-2">
+                <h3 className="text-2xl font-black text-[#0f2b5c] dark:text-white tracking-tight leading-tight uppercase">
+                  Coming Soon!
+                </h3>
+                <p className="text-xs font-bold text-emerald-650 dark:text-emerald-400 uppercase tracking-widest">
+                  {selectedProgramName} Admission
+                </p>
+              </div>
+
+              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                Admissions and registration for the next cohort batch are currently preparation-locked. Follow our newsletter and news updates for announcements on application openings!
               </p>
 
-              {formSuccess ? (
-                <div className="py-8 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-450 flex items-center justify-center mx-auto">
-                    <CheckCircle className="h-6 w-6" />
-                  </div>
-                  <h4 className="font-bold text-lg text-slate-900 dark:text-white">Application Received!</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Your details have been added to the NDSIA admissions list. We will contact you soon.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleApplySubmit} className="space-y-4 mt-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Full Name</label>
-                      <input 
-                        type="text" 
-                        required
-                        value={applicantName}
-                        onChange={(e) => setApplicantName(e.target.value)}
-                        placeholder="John Doe"
-                        className="w-full text-sm p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Age</label>
-                      <input 
-                        type="number" 
-                        required
-                        value={applicantAge}
-                        onChange={(e) => setApplicantAge(e.target.value)}
-                        placeholder="22"
-                        className="w-full text-sm p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Email Address</label>
-                      <input 
-                        type="email" 
-                        required
-                        value={applicantEmail}
-                        onChange={(e) => setApplicantEmail(e.target.value)}
-                        placeholder="john@example.com"
-                        className="w-full text-sm p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Phone Number</label>
-                      <input 
-                        type="tel" 
-                        required
-                        value={applicantPhone}
-                        onChange={(e) => setApplicantPhone(e.target.value)}
-                        placeholder="+234..."
-                        className="w-full text-sm p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Why do you want to join NDSIA?</label>
-                    <textarea 
-                      rows={3}
-                      required
-                      value={applicationReason}
-                      onChange={(e) => setApplicationReason(e.target.value)}
-                      placeholder="Tell us about your learning objectives and goals..."
-                      className="w-full text-sm p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                    />
-                  </div>
-
-                  <div className="flex gap-4 pt-2">
-                    <button 
-                      type="button"
-                      onClick={() => setShowApplyModal(false)}
-                      className="w-1/2 p-3 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                    >
-                      Cancel
-                    </button>
-                    <button 
-                      type="submit"
-                      className="w-1/2 p-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-sm font-bold shadow-md shadow-emerald-500/10 transition-colors"
-                    >
-                      Submit Application
-                    </button>
-                  </div>
-                </form>
-              )}
-
+              <button 
+                type="button"
+                onClick={() => setShowApplyModal(false)}
+                className="w-full p-3.5 bg-[#0f2b5c] hover:bg-[#0a1d3f] text-white rounded-xl text-sm font-bold shadow-md transition-all active:scale-95 cursor-pointer"
+              >
+                Close Window
+              </button>
             </motion.div>
           </div>
         )}

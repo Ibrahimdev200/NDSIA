@@ -291,7 +291,7 @@ export default function HomePage() {
               { year: '2026+', title: 'Future Academy', desc: 'Constructing a permanent campus structure to offer standard digital empowerment to thousands across Bayelsa.' }
             ].map((step, idx) => (
               <motion.div 
-                key={step.year} 
+                key={`${step.year}-${idx}`} 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

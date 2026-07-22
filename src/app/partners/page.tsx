@@ -153,110 +153,32 @@ export default function PartnersPage() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl relative"
+              className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-3xl max-w-md w-full p-8 shadow-2xl relative text-center space-y-6"
             >
-              <h3 className="text-2xl font-extrabold text-[#0f2b5c] dark:text-white tracking-tight leading-tight">
-                Partner Registration
-              </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Establish a strategic alliance to support tech literacy in Bayelsa.
+              <div className="w-16 h-16 rounded-full bg-orange-100 text-orange-605 dark:bg-orange-950/40 dark:text-orange-400 flex items-center justify-center mx-auto animate-pulse">
+                <Handshake className="h-8 w-8" />
+              </div>
+              
+              <div className="space-y-2">
+                <h3 className="text-2xl font-black text-[#0f2b5c] dark:text-white tracking-tight leading-tight uppercase">
+                  Coming Soon!
+                </h3>
+                <p className="text-xs font-bold text-emerald-650 dark:text-emerald-400 uppercase tracking-widest">
+                  Partner Registration
+                </p>
+              </div>
+
+              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                Partner and affiliate registration portals are currently locked for modifications. Please use our contact channels or email us at <a href="mailto:infondsia@outlook.com" className="font-bold text-[#0f2b5c] dark:text-blue-400 hover:underline">infondsia@outlook.com</a> to discuss direct proposals!
               </p>
 
-              {submitSuccess ? (
-                <div className="py-8 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-450 flex items-center justify-center mx-auto">
-                    <CheckCircle className="h-6 w-6" />
-                  </div>
-                  <h4 className="font-bold text-lg text-slate-900 dark:text-white">Proposal Received!</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Your details are saved. The NDSIA partnerships coordinator will contact you shortly.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handlePartnerSubmit} className="space-y-4 mt-6">
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Organization Name</label>
-                      <input
-                        type="text"
-                        required
-                        value={orgName}
-                        onChange={(e) => setOrgName(e.target.value)}
-                        placeholder="E.g., Tech Alliance"
-                        className="w-full text-sm p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Partnership Model</label>
-                      <select
-                        value={orgType}
-                        onChange={(e) => setOrgType(e.target.value)}
-                        className="w-full text-sm p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                      >
-                        <option value="sponsor">Financial Sponsorship</option>
-                        <option value="technical">Technical / Hardware Support</option>
-                        <option value="academic">Academic / Mentorship Pool</option>
-                        <option value="community">Community / NGO Support</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Contact Person Name</label>
-                      <input
-                        type="text"
-                        required
-                        value={orgContact}
-                        onChange={(e) => setOrgContact(e.target.value)}
-                        placeholder="E.g., Jane Cooper"
-                        className="w-full text-sm p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Contact Email</label>
-                      <input
-                        type="email"
-                        required
-                        value={orgEmail}
-                        onChange={(e) => setOrgEmail(e.target.value)}
-                        placeholder="jane@techalliance.org"
-                        className="w-full text-sm p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Describe your partnership proposal</label>
-                    <textarea
-                      rows={3}
-                      required
-                      value={orgProposal}
-                      onChange={(e) => setOrgProposal(e.target.value)}
-                      placeholder="We wish to partner by donating workstations or hosting remote webinars..."
-                      className="w-full text-sm p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                    />
-                  </div>
-
-                  <div className="flex gap-4 pt-2">
-                    <button
-                      type="button"
-                      onClick={() => setShowFormModal(false)}
-                      className="w-1/2 p-3 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      className="w-1/2 p-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-sm font-bold shadow-md transition-colors"
-                    >
-                      Submit Proposal
-                    </button>
-                  </div>
-                </form>
-              )}
-
+              <button 
+                type="button"
+                onClick={() => setShowFormModal(false)}
+                className="w-full p-3.5 bg-[#0f2b5c] hover:bg-[#0a1d3f] text-white rounded-xl text-sm font-bold shadow-md transition-all active:scale-95 cursor-pointer"
+              >
+                Close Window
+              </button>
             </motion.div>
           </div>
         )}
