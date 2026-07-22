@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useCMS } from '@/context/CMSContext';
+import { initialPrograms } from '@/data/initialData';
 import { 
   BookOpen, 
   Clock, 
@@ -17,7 +17,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ProgramsPage() {
-  const { programs, addStudent } = useCMS();
+  const programs = initialPrograms;
   const [mounted, setMounted] = useState(false);
   
   // Registration Form State
@@ -42,12 +42,6 @@ export default function ProgramsPage() {
   const handleApplySubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (applicantName && applicantEmail && applicantPhone && selectedProgramName) {
-      addStudent({
-        name: applicantName,
-        program: selectedProgramName,
-        status: 'applied',
-        cohort: 'Cohort 5 (Pending Intake)'
-      });
       setFormSuccess(true);
       setTimeout(() => {
         setFormSuccess(false);

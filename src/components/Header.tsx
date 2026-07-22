@@ -1,21 +1,44 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useCMS } from '@/context/CMSContext';
 import { NDSIALogo } from './NDSIALogo';
-import { Menu, X, ChevronDown, Sun, Moon, Lock, ArrowRight, Heart } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Header: React.FC = () => {
   const pathname = usePathname();
-  const { darkMode, toggleDarkMode } = useCMS();
+  const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  // Skip header on admin dashboard routes to give more workspace
-  const isAdminRoute = pathname?.startsWith('/admin');
+  // Initialize theme from document class/localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isDark = document.documentElement.classList.contains('dark') || localStorage.getItem('theme') === 'dark';
+      setDarkMode(isDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    const nextDark = !darkMode;
+    setDarkMode(nextDark);
+    if (typeof window !== 'undefined') {
+      if (nextDark) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+  };
 
   const navItems = [
     { name: 'Home', href: '/' },
@@ -38,75 +61,40 @@ export const Header: React.FC = () => {
     {
       name: 'Governance',
       dropdown: [
-        { name: 'Transparency & Reports', href: '/transparency' },
-        { name: 'Partners & Sponsors', href: '/partners' },
+        { name: 'Financial Transparency', href: '/transparency' },
+        { name: 'Partners & Affiliates', href: '/partners' },
+        { name: 'Contact & Support', href: '/contact' },
       ],
     },
-    { name: 'News', href: '/news' },
-    { name: 'Contact', href: '/contact' },
   ];
 
+  const isActive = (href: string) => pathname === href;
+
   const handleDropdownToggle = (name: string) => {
-    setActiveDropdown(activeDropdown === name ? null : name);
+    if (activeDropdown === name) {
+      setActiveDropdown(null);
+    } else {
+      setActiveDropdown(name);
+    }
   };
 
-  const isActive = (href: string) => pathname === href;
-  const isDropdownActive = (items: { href: string }[]) => items.some((item) => pathname === item.href);
-
-  if (isAdminRoute) {
-    return (
-      <header className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 flex items-center justify-between">
-        <Link href="/">
-          <NDSIALogo className="h-8" />
-        </Link>
-        <div className="flex items-center gap-4">
-          <Link
-            href="/admin"
-            className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-50"
-          >
-            <Lock className="h-3.5 w-3.5" />
-            Admin Panel
-          </Link>
-          <div className="h-4 w-px bg-slate-200 dark:bg-slate-800" />
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400"
-            aria-label="Toggle theme"
-          >
-            {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </button>
-          <Link
-            href="/"
-            className="text-sm font-semibold text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary-hover flex items-center gap-1"
-          >
-            View Site <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </header>
-    );
-  }
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200/50 dark:border-slate-800/50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md transition-colors duration-300">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-20">
         
-        {/* Brand Logo */}
-        <Link href="/" className="flex-shrink-0" onClick={() => setMobileMenuOpen(false)}>
-          <NDSIALogo showTagline className="h-10 md:h-12" />
+        {/* Logo Branding */}
+        <Link href="/" className="focus:outline-none">
+          <NDSIALogo className="h-10 sm:h-12" />
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation Link Items */}
         <nav className="hidden lg:flex items-center gap-8">
           {navItems.map((item) => (
-            <div key={item.name} className="relative group">
+            <div key={item.name} className="relative group py-2">
               {item.dropdown ? (
                 <button
                   onClick={() => handleDropdownToggle(item.name)}
-                  className={`flex items-center gap-1.5 text-[15px] font-medium transition-colors ${
-                    isDropdownActive(item.dropdown)
-                      ? 'text-[#0f2b5c] dark:text-blue-400 font-semibold'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-[#0f2b5c] dark:hover:text-blue-400'
-                  }`}
+                  className="flex items-center gap-1 text-[15px] font-medium text-slate-650 dark:text-slate-200 hover:text-[#0f2b5c] dark:hover:text-blue-400 focus:outline-none"
                 >
                   {item.name}
                   <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
@@ -117,7 +105,7 @@ export const Header: React.FC = () => {
                   className={`text-[15px] font-medium transition-colors ${
                     isActive(item.href!)
                       ? 'text-[#0f2b5c] dark:text-blue-400 font-semibold'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-[#0f2b5c] dark:hover:text-blue-400'
+                      : 'text-slate-600 dark:text-slate-330 hover:text-[#0f2b5c] dark:hover:text-blue-400'
                   }`}
                 >
                   {item.name}
@@ -134,7 +122,7 @@ export const Header: React.FC = () => {
                       className={`block rounded-lg px-4 py-2.5 text-sm transition-colors ${
                         isActive(subItem.href)
                           ? 'bg-slate-100 dark:bg-slate-800 text-[#0f2b5c] dark:text-blue-400 font-semibold'
-                          : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-[#0f2b5c] dark:hover:text-blue-400'
+                          : 'text-slate-750 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-[#0f2b5c] dark:hover:text-blue-400'
                       }`}
                     >
                       {subItem.name}
@@ -150,19 +138,11 @@ export const Header: React.FC = () => {
         <div className="hidden lg:flex items-center gap-4">
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-colors"
+            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-colors cursor-pointer"
             aria-label="Toggle theme"
           >
             {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </button>
-          
-          <Link
-            href="/admin"
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-colors"
-            title="Admin CMS Portal"
-          >
-            <Lock className="h-4 w-4" />
-          </Link>
 
           <Link
             href="/donate"
@@ -177,14 +157,14 @@ export const Header: React.FC = () => {
         <div className="flex lg:hidden items-center gap-3">
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400"
+            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 cursor-pointer"
             aria-label="Toggle theme"
           >
             {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+            className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
             aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -244,7 +224,7 @@ export const Header: React.FC = () => {
                       className={`block px-3 py-2 text-base font-semibold rounded-md transition-colors ${
                         isActive(item.href!)
                           ? 'bg-slate-100 dark:bg-slate-800 text-[#0f2b5c] dark:text-blue-400'
-                          : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50'
+                          : 'text-slate-700 dark:text-slate-305 hover:bg-slate-50 dark:hover:bg-slate-800/50'
                       }`}
                     >
                       {item.name}
@@ -254,14 +234,6 @@ export const Header: React.FC = () => {
               ))}
               
               <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-3">
-                <Link
-                  href="/admin"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-400 py-2 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-lg"
-                >
-                  <Lock className="h-4 w-4" /> Admin Portal
-                </Link>
-                
                 <Link
                   href="/donate"
                   onClick={() => setMobileMenuOpen(false)}

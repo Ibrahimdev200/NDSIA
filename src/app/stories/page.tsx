@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useCMS } from '@/context/CMSContext';
+import { initialSuccessStories } from '@/data/initialData';
 import { Quote, Briefcase, Plus, CheckCircle, GraduationCap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function SuccessStoriesPage() {
-  const { stories, addStory } = useCMS();
+  const [stories, setStories] = useState<any[]>([]);
   const [mounted, setMounted] = useState(false);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [alumName, setAlumName] = useState('');
@@ -20,12 +20,14 @@ export default function SuccessStoriesPage() {
 
   useEffect(() => {
     setMounted(true);
+    setStories(initialSuccessStories);
   }, []);
 
   const handleTestimonialSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (alumName && alumBefore && alumAfter && alumStory) {
-      addStory({
+      const newStory = {
+        id: `story-${Date.now()}`,
         name: alumName,
         cohort: alumCohort,
         roleBefore: alumBefore,
@@ -33,7 +35,8 @@ export default function SuccessStoriesPage() {
         story: alumStory,
         company: alumCompany || undefined,
         image: alumImage
-      });
+      };
+      setStories(prev => [...prev, newStory]);
       setSubmitSuccess(true);
       setTimeout(() => {
         setSubmitSuccess(false);

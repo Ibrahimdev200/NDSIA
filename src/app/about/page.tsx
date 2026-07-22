@@ -2,12 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useCMS } from '@/context/CMSContext';
+import { initialTeam } from '@/data/initialData';
 import { Shield, Users, Award, BookOpen, Target, Sparkles, Heart, HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function AboutPage() {
-  const { team } = useCMS();
+  const team = initialTeam;
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

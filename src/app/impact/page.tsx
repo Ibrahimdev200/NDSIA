@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useCMS } from '@/context/CMSContext';
+import { initialSuccessStories, initialProjects } from '@/data/initialData';
 import { 
   TrendingUp, 
   Users, 
@@ -19,7 +19,8 @@ import {
 import { motion } from 'framer-motion';
 
 export default function ImpactPage() {
-  const { stories, projects } = useCMS();
+  const stories = initialSuccessStories;
+  const projects = initialProjects;
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

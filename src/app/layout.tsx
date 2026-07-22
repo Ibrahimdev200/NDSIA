@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Outfit, Inter } from 'next/font/google';
 import './globals.css';
-import { CMSProvider } from '@/context/CMSContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
@@ -44,13 +43,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} ${inter.variable} h-full antialiased`} style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
-        <CMSProvider>
-          <Header />
-          <main className="flex-grow flex flex-col">
-            {children}
-          </main>
-          <Footer />
-        </CMSProvider>
+        <Header />
+        <main className="flex-grow flex flex-col">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

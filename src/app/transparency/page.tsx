@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useCMS } from '@/context/CMSContext';
+import { initialReports, initialFAQs } from '@/data/initialData';
 import { 
   Download, 
   FileText, 
@@ -16,7 +16,8 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function TransparencyPage() {
-  const { reports, faqs } = useCMS();
+  const reports = initialReports;
+  const faqs = initialFAQs;
   const [mounted, setMounted] = useState(false);
   const [activeFaq, setActiveFaq] = useState<string | null>(null);
   const [downloadingReportId, setDownloadingReportId] = useState<string | null>(null);

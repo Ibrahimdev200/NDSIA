@@ -2,12 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useCMS } from '@/context/CMSContext';
+import { initialNews } from '@/data/initialData';
 import { Calendar, User, Search, ChevronRight, X, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function NewsPage() {
-  const { news } = useCMS();
+  const news = initialNews;
   const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedArticle, setSelectedArticle] = useState<any | null>(null);

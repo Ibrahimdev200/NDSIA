@@ -3,7 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useCMS } from '@/context/CMSContext';
+import { 
+  initialPrograms, 
+  initialSuccessStories, 
+  initialNews, 
+  initialPartners, 
+  initialProjects 
+} from '@/data/initialData';
 import { 
   ArrowRight, 
   GraduationCap, 
@@ -48,9 +54,12 @@ const StatItem: React.FC<{ label: string; value: string; icon: React.ReactNode }
 };
 
 export default function HomePage() {
-  const { programs, stories, news, partners, projects } = useCMS();
+  const programs = initialPrograms;
+  const stories = initialSuccessStories;
+  const news = initialNews;
+  const partners = initialPartners;
+  const projects = initialProjects;
   const [mounted, setMounted] = useState(false);
-  const [isPlayingVideo, setIsPlayingVideo] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -534,38 +543,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* 10. INTERACTIVE VIDEO PLAYBACK OVERLAY */}
-      <AnimatePresence>
-        {isPlayingVideo && (
-          <div className="fixed inset-0 z-55 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md">
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              className="relative w-full max-w-4xl aspect-video rounded-3xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl flex items-center justify-center"
-            >
-              <button
-                onClick={() => setIsPlayingVideo(false)}
-                className="absolute top-4 right-4 z-50 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors cursor-pointer"
-                aria-label="Close video player"
-              >
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
-              <video
-                src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-his-computer-34288-large.mp4"
-                className="w-full h-full object-contain"
-                autoPlay
-                controls
-                playsInline
-              />
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
 
     </div>
   );

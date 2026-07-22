@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useCMS } from '@/context/CMSContext';
+import { initialPartners } from '@/data/initialData';
 import { ShieldCheck, Plus, CheckCircle, Handshake, Users, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function PartnersPage() {
-  const { partners, addPartner } = useCMS();
+  const [partners, setPartners] = useState<any[]>([]);
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState('all');
   
@@ -21,16 +21,19 @@ export default function PartnersPage() {
 
   useEffect(() => {
     setMounted(true);
+    setPartners(initialPartners);
   }, []);
 
   const handlePartnerSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (orgName && orgContact && orgEmail) {
-      addPartner({
+      const newPartner = {
+        id: `part-${Date.now()}`,
         name: orgName,
-        logoUrl: '🤝', // Standard logo emoji placeholder for dynamic submissions
+        logoUrl: '🤝',
         type: orgType as 'sponsor' | 'academic' | 'community' | 'technical'
-      });
+      };
+      setPartners(prev => [...prev, newPartner]);
       setSubmitSuccess(true);
       setTimeout(() => {
         setSubmitSuccess(false);
