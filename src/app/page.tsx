@@ -146,7 +146,7 @@ export default function HomePage() {
             </motion.div>
           </div>
 
-          {/* Hero Right Visuals (Interactive Video Player) */}
+          {/* Hero Right Visuals (Autoplay Loop Video Display) */}
           <div className="lg:col-span-5 relative flex justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -155,26 +155,16 @@ export default function HomePage() {
               className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden border-2 border-slate-200 dark:border-slate-800 shadow-2xl group"
             >
               {/* Using high-quality placeholder styling with a premium gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-emerald-600/40 via-blue-900/50 to-orange-500/20 z-10" />
-              <img
-                src="/hero-video-poster.jpg"
-                alt="NDSIA Classroom Video Thumbnail"
+              <div className="absolute inset-0 bg-gradient-to-tr from-emerald-600/30 via-blue-900/40 to-orange-500/10 z-10 pointer-events-none" />
+              <video
+                src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-his-computer-34288-large.mp4"
                 className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700"
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster="/hero-video-poster.jpg"
               />
-              
-              {/* Pulsing Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center z-20">
-                <button
-                  onClick={() => setIsPlayingVideo(true)}
-                  className="p-5 bg-white/95 text-[#0f2b5c] hover:bg-emerald-500 hover:text-white rounded-full shadow-2xl transition-all hover:scale-110 active:scale-95 group/play cursor-pointer flex items-center justify-center relative border border-slate-100"
-                  aria-label="Play classroom video"
-                >
-                  <span className="absolute inset-0 rounded-full bg-white/30 animate-ping group-hover/play:bg-emerald-500/30" />
-                  <svg className="h-8 w-8 fill-current ml-1" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </button>
-              </div>
 
               <div className="absolute bottom-6 left-6 right-6 z-20 glass p-5 rounded-2xl shadow-lg">
                 <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest flex items-center gap-1.5">
@@ -182,10 +172,10 @@ export default function HomePage() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                   </span>
-                  Interactive Classroom Video
+                  Live Classroom Loop
                 </p>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mt-1">Watch Cohort 4 Students in Action</h3>
-                <p className="text-xs text-slate-600 dark:text-slate-350 mt-0.5">Click to watch training sessions and interviews.</p>
+                <h3 className="text-base font-bold text-slate-900 dark:text-white mt-1">Nembe Tech Hub in Action</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-350 mt-0.5">Students practicing code and collaborating.</p>
               </div>
             </motion.div>
           </div>
