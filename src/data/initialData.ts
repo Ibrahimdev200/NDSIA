@@ -179,7 +179,7 @@ export const initialNews: NewsArticle[] = [
     excerpt: 'Our recently concluded cohort of 120 students shows record-breaking outcomes in local placements and digital freelance work.',
     content: 'We are incredibly proud to publish the outcomes of our fourth community cohort. Through direct partnerships with Bayelsa businesses and global freelancing programs, over 85% of graduates have secured full-time roles or consistent freelance projects within 90 days of graduation. The graduation ceremony was attended by community leaders and youth advocates.',
     date: '2026-06-15',
-    image: '/graduates-hall.jpg',
+    image: '/news-classroom-1.jpg',
     author: 'Precious Alagoa'
   },
   {
@@ -188,7 +188,7 @@ export const initialNews: NewsArticle[] = [
     excerpt: 'A donation of high-speed satellite hardware and 40 workstations will double our student capacity for the upcoming intake.',
     content: 'Through a newly formed agreement with the Regional Digital Alliance, the Academy will receive major infrastructure upgrades. This includes state-of-the-art satellite internet terminal setups and forty high-end workstations. These improvements will allow us to double classroom sizes for our next cohort, starting in September.',
     date: '2026-07-02',
-    image: '/hero-classroom.jpg',
+    image: '/news-classroom-2.jpg',
     author: 'Tari Ella'
   }
 ];
