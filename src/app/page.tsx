@@ -20,7 +20,7 @@ import {
   ChevronRight,
   Sparkles
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Quick Stat Counter Component
 const StatItem: React.FC<{ label: string; value: string; icon: React.ReactNode }> = ({ label, value, icon }) => {
@@ -50,6 +50,7 @@ const StatItem: React.FC<{ label: string; value: string; icon: React.ReactNode }
 export default function HomePage() {
   const { programs, stories, news, partners, projects } = useCMS();
   const [mounted, setMounted] = useState(false);
+  const [isPlayingVideo, setIsPlayingVideo] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -145,28 +146,46 @@ export default function HomePage() {
             </motion.div>
           </div>
 
-          {/* Hero Right Visuals */}
+          {/* Hero Right Visuals (Interactive Video Player) */}
           <div className="lg:col-span-5 relative flex justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden border-2 border-slate-200 dark:border-slate-800 shadow-2xl"
+              className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden border-2 border-slate-200 dark:border-slate-800 shadow-2xl group"
             >
               {/* Using high-quality placeholder styling with a premium gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-emerald-600/40 via-blue-900/60 to-orange-500/30 z-10" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-emerald-600/40 via-blue-900/50 to-orange-500/20 z-10" />
               <img
-                src="/hero-classroom.jpg"
-                alt="NDSIA Classroom in Session"
-                className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-700"
+                src="/hero-video-poster.jpg"
+                alt="NDSIA Classroom Video Thumbnail"
+                className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700"
               />
+              
+              {/* Pulsing Play Button Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center z-20">
+                <button
+                  onClick={() => setIsPlayingVideo(true)}
+                  className="p-5 bg-white/95 text-[#0f2b5c] hover:bg-emerald-500 hover:text-white rounded-full shadow-2xl transition-all hover:scale-110 active:scale-95 group/play cursor-pointer flex items-center justify-center relative border border-slate-100"
+                  aria-label="Play classroom video"
+                >
+                  <span className="absolute inset-0 rounded-full bg-white/30 animate-ping group-hover/play:bg-emerald-500/30" />
+                  <svg className="h-8 w-8 fill-current ml-1" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
+              </div>
+
               <div className="absolute bottom-6 left-6 right-6 z-20 glass p-5 rounded-2xl shadow-lg">
-                <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Featured Story</p>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mt-1">From Zero Computer Literacy to Global Remote Work</h3>
-                <p className="text-xs text-slate-600 dark:text-slate-350 mt-0.5">Meet Tari, graduate of Cohort 2.</p>
-                <Link href="/stories" className="text-xs font-bold text-[#0f2b5c] dark:text-blue-400 hover:underline flex items-center gap-1 mt-2">
-                  Read Her Story <ArrowRight className="h-3 w-3" />
-                </Link>
+                <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest flex items-center gap-1.5">
+                  <span className="flex h-2 w-2 relative">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  Interactive Classroom Video
+                </p>
+                <h3 className="text-base font-bold text-slate-900 dark:text-white mt-1">Watch Cohort 4 Students in Action</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-350 mt-0.5">Click to watch training sessions and interviews.</p>
               </div>
             </motion.div>
           </div>
@@ -525,6 +544,38 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* 10. INTERACTIVE VIDEO PLAYBACK OVERLAY */}
+      <AnimatePresence>
+        {isPlayingVideo && (
+          <div className="fixed inset-0 z-55 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md">
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative w-full max-w-4xl aspect-video rounded-3xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl flex items-center justify-center"
+            >
+              <button
+                onClick={() => setIsPlayingVideo(false)}
+                className="absolute top-4 right-4 z-50 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors cursor-pointer"
+                aria-label="Close video player"
+              >
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              <video
+                src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-his-computer-34288-large.mp4"
+                className="w-full h-full object-contain"
+                autoPlay
+                controls
+                playsInline
+              />
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
     </div>
   );
