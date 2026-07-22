@@ -17,11 +17,8 @@ export const NDSIALogo: React.FC<NDSIALogoProps> = ({
         className={`${className} w-auto object-contain rounded-xl shadow-sm`} 
       />
       <div className="flex flex-col">
-        <span className="font-black text-base sm:text-lg tracking-wider text-[#0f2b5c] dark:text-white leading-tight uppercase font-sans">
+        <span className="font-black text-lg sm:text-xl tracking-wider text-[#0f2b5c] dark:text-white leading-tight uppercase font-sans">
           NDSIA
-        </span>
-        <span className="text-[9px] font-bold text-slate-450 dark:text-slate-400 uppercase tracking-widest leading-none mt-0.5">
-          Opu-Nembe Academy
         </span>
       </div>
     </div>
