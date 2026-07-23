@@ -18,8 +18,8 @@ const sponsorPackages: Package[] = [
   {
     id: 'one-student',
     name: 'Sponsor One Student',
-    price: 50,
-    currency: '$',
+    price: 50000,
+    currency: '₦',
     icon: <BookOpen className="h-6 w-6" />,
     impactStatement: 'Provides one student with complete tuition, learning materials, and dedicated lab workstation access for an 8-week track.',
     details: ['8-week tuition covered', 'Classroom seat and laptop access', 'Digital study materials', 'M&E progress reports']
@@ -27,8 +27,8 @@ const sponsorPackages: Package[] = [
   {
     id: 'five-students',
     name: 'Sponsor Five Students',
-    price: 250,
-    currency: '$',
+    price: 250000,
+    currency: '₦',
     icon: <Award className="h-6 w-6" />,
     impactStatement: 'Empowers a small group of learners with professional specialization tracks and access to international freelancing portals.',
     details: ['16-week professional tracks', 'Software premium licensing pool', 'Coaching sessions with remote developers', 'Active freelancing set up guidance']
@@ -36,8 +36,8 @@ const sponsorPackages: Package[] = [
   {
     id: 'internet',
     name: 'Sponsor Internet Connectivity',
-    price: 500,
-    currency: '$',
+    price: 500000,
+    currency: '₦',
     icon: <Globe className="h-6 w-6" />,
     impactStatement: 'Covers high-speed satellite broadband internet for the entire academy lab for a period of three months.',
     details: ['Uncapped high-speed broadband', 'Enables live online coding calls', 'Allows remote freelance work on platforms', 'Funder recognition in the tech lab']
@@ -45,8 +45,8 @@ const sponsorPackages: Package[] = [
   {
     id: 'equipment',
     name: 'Sponsor Lab Equipment',
-    price: 1500,
-    currency: '$',
+    price: 1500000,
+    currency: '₦',
     icon: <Cpu className="h-6 w-6" />,
     impactStatement: 'Funds three new high-end developer-grade computer workstations and local area networking switches for our lab expansion.',
     details: ['3 high-end developer computers', 'High-quality keyboards & mouse gear', 'Router & local server hardware', 'Sponsor plate on the workstations']
@@ -54,8 +54,8 @@ const sponsorPackages: Package[] = [
   {
     id: 'classroom',
     name: 'Sponsor a Classroom Setup',
-    price: 5000,
-    currency: '$',
+    price: 5000000,
+    currency: '₦',
     icon: <School className="h-6 w-6" />,
     impactStatement: 'Fully equips a satellite computer classroom with desks, chairs, cooling units, and backup battery systems.',
     details: ['20 custom student computer desks', 'Ergonomic study chairs', 'Air conditioning / cooling setup', 'Backup solar battery inverter (2.5kVA)']
@@ -63,8 +63,8 @@ const sponsorPackages: Package[] = [
   {
     id: 'cohort',
     name: 'Sponsor an Entire Cohort',
-    price: 15000,
-    currency: '$',
+    price: 15000000,
+    currency: '₦',
     icon: <Heart className="h-6 w-6" />,
     impactStatement: 'Complete sponsorship for a community intake of 60 students: tuition, hardware, satellite internet, solar backup, and mentors.',
     details: ['60 students fully trained', 'Facility operating costs for 4 months', 'Stipends for lead local instructors', 'Dedicated cohort landing page and donor audit']
@@ -217,10 +217,9 @@ export default function DonatePage() {
                   <h4 className="font-extrabold text-sm text-slate-900 dark:text-white">{pkg.name}</h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-2">{pkg.impactStatement}</p>
                 </div>
-                
-                <div className="pt-4 mt-4 border-t border-slate-200/50 dark:border-slate-850 flex items-baseline gap-1">
-                  <span className="text-2xl font-black text-[#0f2b5c] dark:text-blue-400">{pkg.currency}{pkg.price}</span>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">USD Sponsor</span>
+                     <div className="pt-4 mt-4 border-t border-slate-200/50 dark:border-slate-850 flex items-baseline gap-1">
+                  <span className="text-2xl font-black text-[#0f2b5c] dark:text-blue-400">{pkg.currency}{pkg.price.toLocaleString()}</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">NGN Sponsor</span>
                 </div>
               </div>
             ))}
@@ -229,13 +228,13 @@ export default function DonatePage() {
           <div className="p-6 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-3xl space-y-4">
             <h4 className="font-extrabold text-sm text-slate-900 dark:text-white">Or enter a Custom Amount</h4>
             <div className="relative max-w-xs">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-slate-400 text-base">$</span>
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-slate-400 text-base">₦</span>
               <input
                 type="number"
                 value={customAmount}
                 onChange={handleCustomAmountChange}
-                placeholder="E.g., 100"
-                className="w-full pl-8 pr-4 py-3 bg-white dark:bg-slate-900 border border-slate-250 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
+                placeholder="E.g., 10000"
+                className="w-full pl-8 pr-4 py-3 bg-white dark:bg-slate-900 border border-slate-255 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
               />
             </div>
           </div>
@@ -246,8 +245,8 @@ export default function DonatePage() {
           <div className="bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 md:p-8 shadow-sm space-y-6 sticky top-24">
             
             <div className="space-y-1">
-              <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">Transaction Simulator</h3>
-              <p className="text-xs text-slate-400 dark:text-slate-500">Secure, encrypted sandbox checkout.</p>
+              <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">Donation Checkout</h3>
+              <p className="text-xs text-slate-400 dark:text-slate-500">Secure payment portal powered by Kora.</p>
             </div>
 
             {successReceipt ? (
@@ -263,7 +262,7 @@ export default function DonatePage() {
                 
                 <div className="text-left bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-850 p-4 rounded-xl space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
                   <div className="flex justify-between border-b border-slate-100 dark:border-slate-850 pb-1.5">
-                    <span>Receipt Number</span>
+                    <span>Receipt Reference</span>
                     <span className="font-mono font-bold text-slate-950 dark:text-white">{successReceipt.receiptNumber}</span>
                   </div>
                   <div className="flex justify-between border-b border-slate-100 dark:border-slate-850 pb-1.5">
@@ -276,12 +275,12 @@ export default function DonatePage() {
                   </div>
                   <div className="flex justify-between">
                     <span>Donation Amount</span>
-                    <span className="font-black text-[#0f2b5c] dark:text-blue-400">${successReceipt.amount} USD</span>
+                    <span className="font-black text-[#0f2b5c] dark:text-blue-400">₦{successReceipt.amount.toLocaleString()} NGN</span>
                   </div>
                 </div>
                 
                 <p className="text-[10px] text-slate-450 leading-relaxed pt-1">
-                  Thank you for investing in the future of Nembe! A mock tax receipt has been generated and dispatched to your simulated inbox.
+                  Thank you for investing in the future of Nembe! A confirmation has been registered for this transaction reference.
                 </p>
                 <button
                   onClick={() => setSuccessReceipt(null)}
@@ -297,9 +296,9 @@ export default function DonatePage() {
                   <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Selected Package</label>
                   <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-xl font-bold text-sm text-slate-800 dark:text-slate-250">
                     {selectedPackage ? (
-                      <span className="text-slate-950 dark:text-white">{selectedPackage.name} (${selectedPackage.price})</span>
+                      <span className="text-slate-950 dark:text-white">{selectedPackage.name} (₦{selectedPackage.price.toLocaleString()})</span>
                     ) : customAmount ? (
-                      <span className="text-slate-950 dark:text-white">Custom Support (${customAmount})</span>
+                      <span className="text-slate-950 dark:text-white">Custom Support (₦{parseFloat(customAmount).toLocaleString()})</span>
                     ) : (
                       <span className="text-slate-400">None selected (Select a package on the left)</span>
                     )}
@@ -344,7 +343,7 @@ export default function DonatePage() {
                 >
                   {isSubmitting ? 'Opening Secure Checkout...' : (
                     <>
-                      Proceed to Payment (${getActiveAmount()})
+                      Proceed to Payment (₦{getActiveAmount().toLocaleString()})
                       <Heart className="h-4.5 w-4.5 fill-white animate-pulse" />
                     </>
                   )}
