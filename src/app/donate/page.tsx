@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Heart, CheckCircle, ShieldAlert, Award, Globe, Laptop, BookOpen, School, Cpu } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -76,11 +76,19 @@ export default function DonatePage() {
   const [customAmount, setCustomAmount] = useState('');
   const [donorName, setDonorName] = useState('');
   const [donorEmail, setDonorEmail] = useState('');
-  const [cardNumber, setCardNumber] = useState('');
-  const [cardExpiry, setCardExpiry] = useState('');
-  const [cardCVV, setCardCVV] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [successReceipt, setSuccessReceipt] = useState<any | null>(null);
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://korablobstorage.blob.core.windows.net/modal-bucket/korapay-collections.min.js';
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const getActiveAmount = () => {
     if (selectedPackage) return selectedPackage.price;
@@ -90,38 +98,72 @@ export default function DonatePage() {
   const handleSelectPackage = (pkg: Package) => {
     setSelectedPackage(pkg);
     setCustomAmount('');
+    setErrorMessage('');
   };
 
   const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomAmount(e.target.value);
     setSelectedPackage(null);
+    setErrorMessage('');
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const finalAmount = getActiveAmount();
-    if (finalAmount > 0 && donorName && donorEmail) {
-      setIsSubmitting(true);
-      
-      // Simulate transaction processing
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setSuccessReceipt({
-          receiptNumber: `REC-${Date.now().toString().slice(-6)}`,
-          amount: finalAmount,
-          donorName,
-          donorEmail,
-          packageName: selectedPackage ? selectedPackage.name : 'Custom Support Donation',
-          date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-        });
-        
-        // Reset form inputs
-        setDonorName('');
-        setDonorEmail('');
-        setCardNumber('');
-        setCardExpiry('');
-        setCardCVV('');
-      }, 2500);
+    setErrorMessage('');
+
+    if (finalAmount <= 0) {
+      setErrorMessage('Please select a package or enter a valid custom amount.');
+      return;
+    }
+    if (!donorName || !donorEmail) {
+      setErrorMessage('Please provide your name and email address.');
+      return;
+    }
+
+    if (typeof window !== 'undefined' && !(window as any).Korapay) {
+      setErrorMessage('Kora checkout script is loading. Please try again in a few seconds.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      (window as any).Korapay.initialize({
+        key: 'pk_live_9DGexGCNVapTDahCKfgGUjN3jmPHZoSo2XbPMci3',
+        reference: `NDSIA-DON-${Date.now()}`,
+        amount: finalAmount,
+        currency: 'USD',
+        customer: {
+          name: donorName,
+          email: donorEmail
+        },
+        onSuccess: (response: any) => {
+          setIsSubmitting(false);
+          setSuccessReceipt({
+            receiptNumber: response.reference || `REC-${Date.now().toString().slice(-6)}`,
+            amount: finalAmount,
+            donorName,
+            donorEmail,
+            packageName: selectedPackage ? selectedPackage.name : 'Custom Support Donation',
+            date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+          });
+          setDonorName('');
+          setDonorEmail('');
+          setCustomAmount('');
+          setSelectedPackage(null);
+        },
+        onClose: () => {
+          setIsSubmitting(false);
+        },
+        onFailed: (error: any) => {
+          setIsSubmitting(false);
+          setErrorMessage(error?.message || 'Payment transaction failed. Please check your card and try again.');
+        }
+      });
+    } catch (err) {
+      setIsSubmitting(false);
+      setErrorMessage('An error occurred while launching Kora Checkout. Please try again.');
     }
   };
 
@@ -259,14 +301,14 @@ export default function DonatePage() {
                     ) : customAmount ? (
                       <span className="text-slate-950 dark:text-white">Custom Support (${customAmount})</span>
                     ) : (
-                      <span className="text-slate-400">None selected</span>
+                      <span className="text-slate-400">None selected (Select a package on the left)</span>
                     )}
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Donor Name</label>
+                    <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Full Name</label>
                     <input
                       type="text"
                       required
@@ -289,61 +331,28 @@ export default function DonatePage() {
                   </div>
                 </div>
 
-                <div className="h-px bg-slate-200/60 dark:bg-slate-800/60 my-2" />
-
-                <div>
-                  <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Card Number</label>
-                  <input
-                    type="text"
-                    required
-                    value={cardNumber}
-                    onChange={(e) => setCardNumber(e.target.value)}
-                    placeholder="4000 1234 5678 9010"
-                    className="w-full text-sm p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Expiry Date</label>
-                    <input
-                      type="text"
-                      required
-                      value={cardExpiry}
-                      onChange={(e) => setCardExpiry(e.target.value)}
-                      placeholder="MM/YY"
-                      className="w-full text-sm p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                    />
+                {errorMessage && (
+                  <div className="p-3 text-xs bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 rounded-xl font-medium">
+                    {errorMessage}
                   </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">CVV</label>
-                    <input
-                      type="password"
-                      required
-                      value={cardCVV}
-                      onChange={(e) => setCardCVV(e.target.value)}
-                      placeholder="123"
-                      className="w-full text-sm p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                    />
-                  </div>
-                </div>
+                )}
 
                 <button
                   type="submit"
                   disabled={isSubmitting || getActiveAmount() <= 0}
-                  className="w-full py-4 bg-[#ea580c] hover:bg-[#c2410c] disabled:bg-slate-350 dark:disabled:bg-slate-800 text-white rounded-xl text-base font-bold transition-all shadow-md shadow-orange-500/10 active:scale-[0.99] flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-[#ea580c] hover:bg-[#c2410c] disabled:bg-slate-350 dark:disabled:bg-slate-800 text-white rounded-xl text-base font-bold transition-all shadow-md shadow-orange-500/10 active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  {isSubmitting ? 'Verifying Sandbox Card...' : (
+                  {isSubmitting ? 'Opening Secure Checkout...' : (
                     <>
-                      Confirm Sponsor Payment (${getActiveAmount()})
-                      <Heart className="h-4.5 w-4.5 fill-white" />
+                      Proceed to Payment (${getActiveAmount()})
+                      <Heart className="h-4.5 w-4.5 fill-white animate-pulse" />
                     </>
                   )}
                 </button>
                 
                 <div className="flex gap-2 items-start justify-center text-[10px] text-slate-400">
-                  <ShieldAlert className="h-4 w-4 text-slate-400 mt-0.5 flex-shrink-0" />
-                  <span>Sandbox Simulator. No real billing or debit charges are triggered.</span>
+                  <ShieldAlert className="h-4 w-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                  <span>Secure 256-bit encrypted checkout powered by Kora Payments.</span>
                 </div>
               </form>
             )}
