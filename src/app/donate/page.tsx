@@ -280,6 +280,11 @@ export default function DonatePage() {
                     </div>
                   </div>
 
+                  <div className="flex gap-2 items-center justify-center text-[10px] text-slate-450 dark:text-slate-500 pt-1">
+                    <ShieldAlert className="h-3.5 w-3.5 text-emerald-500 flex-shrink-0" />
+                    <span>Payment collection is powered by Campus Grab under Kora Payment.</span>
+                  </div>
+
                   <button
                     onClick={() => setSuccessReceipt(null)}
                     className="text-xs font-bold text-[#0f2b5c] dark:text-blue-400 underline pt-1 cursor-pointer"
@@ -396,6 +401,11 @@ export default function DonatePage() {
                       Confirmation Notice:
                     </p>
                     Once payment is sent, please send a text of the **amount** and your **name** to <strong className="font-black text-slate-950 dark:text-white">09033675852</strong> for confirmation of received funds.
+                  </div>
+
+                  <div className="flex gap-2 items-center justify-center text-[10px] text-slate-450 dark:text-slate-500 pt-2">
+                    <ShieldAlert className="h-3.5 w-3.5 text-emerald-500 flex-shrink-0" />
+                    <span>Payment collection is powered by Campus Grab under Kora Payment.</span>
                   </div>
                 </form>
               )}
