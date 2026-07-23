@@ -132,8 +132,8 @@ export default function DonatePage() {
       (window as any).Korapay.initialize({
         key: 'pk_live_9DGexGCNVapTDahCKfgGUjN3jmPHZoSo2XbPMci3',
         reference: `NDSIA-DON-${Date.now()}`,
-        amount: finalAmount,
-        currency: 'USD',
+        amount: finalAmount * 100,
+        currency: 'NGN',
         customer: {
           name: donorName,
           email: donorEmail
