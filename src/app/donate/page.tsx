@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Heart, CheckCircle, ShieldAlert, Award, Globe, Laptop, BookOpen, School, Cpu } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { Heart, CheckCircle, ShieldAlert, Award, Globe, Laptop, BookOpen, School, Cpu, Copy } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface Package {
   id: string;
@@ -78,17 +78,8 @@ export default function DonatePage() {
   const [donorEmail, setDonorEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [copiedText, setCopiedText] = useState('');
   const [successReceipt, setSuccessReceipt] = useState<any | null>(null);
-
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://korablobstorage.blob.core.windows.net/modal-bucket/korapay-collections.min.js';
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   const getActiveAmount = () => {
     if (selectedPackage) return selectedPackage.price;
@@ -107,6 +98,12 @@ export default function DonatePage() {
     setErrorMessage('');
   };
 
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedText(text);
+    setTimeout(() => setCopiedText(''), 2500);
+  };
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const finalAmount = getActiveAmount();
@@ -121,50 +118,24 @@ export default function DonatePage() {
       return;
     }
 
-    if (typeof window !== 'undefined' && !(window as any).Korapay) {
-      setErrorMessage('Kora checkout script is loading. Please try again in a few seconds.');
-      return;
-    }
-
     setIsSubmitting(true);
 
-    try {
-      (window as any).Korapay.initialize({
-        key: 'pk_live_9DGexGCNVapTDahCKfgGUjN3jmPHZoSo2XbPMci3',
-        reference: `NDSIA-DON-${Date.now()}`,
-        amount: finalAmount * 100,
-        currency: 'NGN',
-        customer: {
-          name: donorName,
-          email: donorEmail
-        },
-        onSuccess: (response: any) => {
-          setIsSubmitting(false);
-          setSuccessReceipt({
-            receiptNumber: response.reference || `REC-${Date.now().toString().slice(-6)}`,
-            amount: finalAmount,
-            donorName,
-            donorEmail,
-            packageName: selectedPackage ? selectedPackage.name : 'Custom Support Donation',
-            date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-          });
-          setDonorName('');
-          setDonorEmail('');
-          setCustomAmount('');
-          setSelectedPackage(null);
-        },
-        onClose: () => {
-          setIsSubmitting(false);
-        },
-        onFailed: (error: any) => {
-          setIsSubmitting(false);
-          setErrorMessage(error?.message || 'Payment transaction failed. Please check your card and try again.');
-        }
-      });
-    } catch (err) {
+    // Simulate submission of transfer confirmation
+    setTimeout(() => {
       setIsSubmitting(false);
-      setErrorMessage('An error occurred while launching Kora Checkout. Please try again.');
-    }
+      setSuccessReceipt({
+        receiptNumber: `TRF-${Date.now().toString().slice(-6)}`,
+        amount: finalAmount,
+        donorName,
+        donorEmail,
+        packageName: selectedPackage ? selectedPackage.name : 'Custom Support Donation',
+        date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+      });
+      setDonorName('');
+      setDonorEmail('');
+      setCustomAmount('');
+      setSelectedPackage(null);
+    }, 1200);
   };
 
   return (
@@ -217,7 +188,8 @@ export default function DonatePage() {
                   <h4 className="font-extrabold text-sm text-slate-900 dark:text-white">{pkg.name}</h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-2">{pkg.impactStatement}</p>
                 </div>
-                     <div className="pt-4 mt-4 border-t border-slate-200/50 dark:border-slate-850 flex items-baseline gap-1">
+                
+                <div className="pt-4 mt-4 border-t border-slate-200/50 dark:border-slate-850 flex items-baseline gap-1">
                   <span className="text-2xl font-black text-[#0f2b5c] dark:text-blue-400">{pkg.currency}{pkg.price.toLocaleString()}</span>
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">NGN Sponsor</span>
                 </div>
@@ -240,121 +212,194 @@ export default function DonatePage() {
           </div>
         </div>
 
-        {/* Right Column: Checkout Simulator & Confirmation */}
+        {/* Right Column: Bank Transfers & Notification Info */}
         <div className="lg:col-span-5">
           <div className="bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 md:p-8 shadow-sm space-y-6 sticky top-24">
             
             <div className="space-y-1">
-              <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">Donation Checkout</h3>
-              <p className="text-xs text-slate-400 dark:text-slate-500">Secure payment portal powered by Kora.</p>
+              <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">Direct Bank Transfer</h3>
+              <p className="text-xs text-slate-400 dark:text-slate-500">Pay locally via bank app or transfer terminal.</p>
             </div>
 
-            {successReceipt ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="p-5 border border-emerald-500/10 bg-emerald-500/5 rounded-2xl space-y-4 text-center"
-              >
-                <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-450 flex items-center justify-center mx-auto">
-                  <CheckCircle className="h-6 w-6" />
-                </div>
-                <h4 className="font-bold text-base text-slate-900 dark:text-white">Sponsorship Confirmed!</h4>
-                
-                <div className="text-left bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-850 p-4 rounded-xl space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
-                  <div className="flex justify-between border-b border-slate-100 dark:border-slate-850 pb-1.5">
-                    <span>Receipt Reference</span>
-                    <span className="font-mono font-bold text-slate-950 dark:text-white">{successReceipt.receiptNumber}</span>
-                  </div>
-                  <div className="flex justify-between border-b border-slate-100 dark:border-slate-850 pb-1.5">
-                    <span>Package Tier</span>
-                    <span className="font-bold text-slate-950 dark:text-white">{successReceipt.packageName}</span>
-                  </div>
-                  <div className="flex justify-between border-b border-slate-100 dark:border-slate-850 pb-1.5">
-                    <span>Funder Name</span>
-                    <span className="font-bold text-slate-950 dark:text-white">{successReceipt.donorName}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Donation Amount</span>
-                    <span className="font-black text-[#0f2b5c] dark:text-blue-400">₦{successReceipt.amount.toLocaleString()} NGN</span>
-                  </div>
-                </div>
-                
-                <p className="text-[10px] text-slate-450 leading-relaxed pt-1">
-                  Thank you for investing in the future of Nembe! A confirmation has been registered for this transaction reference.
-                </p>
-                <button
-                  onClick={() => setSuccessReceipt(null)}
-                  className="text-xs font-bold text-[#0f2b5c] dark:text-blue-400 underline pt-1"
+            <AnimatePresence mode="wait">
+              {successReceipt ? (
+                <motion.div
+                  key="receipt"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="p-5 border border-emerald-500/10 bg-emerald-500/5 rounded-2xl space-y-5 text-center"
                 >
-                  Sponsor Another package
-                </button>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleFormSubmit} className="space-y-4">
-                
-                <div>
-                  <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Selected Package</label>
-                  <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-xl font-bold text-sm text-slate-800 dark:text-slate-250">
-                    {selectedPackage ? (
-                      <span className="text-slate-950 dark:text-white">{selectedPackage.name} (₦{selectedPackage.price.toLocaleString()})</span>
-                    ) : customAmount ? (
-                      <span className="text-slate-950 dark:text-white">Custom Support (₦{parseFloat(customAmount).toLocaleString()})</span>
-                    ) : (
-                      <span className="text-slate-400">None selected (Select a package on the left)</span>
-                    )}
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-450 flex items-center justify-center mx-auto">
+                    <CheckCircle className="h-6 w-6" />
                   </div>
-                </div>
+                  <h4 className="font-bold text-base text-slate-900 dark:text-white">Notification Submitted!</h4>
+                  
+                  <div className="text-left bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-850 p-4 rounded-xl space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
+                    <div className="flex justify-between border-b border-slate-100 dark:border-slate-850 pb-1.5">
+                      <span>Ref ID</span>
+                      <span className="font-mono font-bold text-slate-950 dark:text-white">{successReceipt.receiptNumber}</span>
+                    </div>
+                    <div className="flex justify-between border-b border-slate-100 dark:border-slate-850 pb-1.5">
+                      <span>Package</span>
+                      <span className="font-bold text-slate-950 dark:text-white text-right truncate max-w-[150px]">{successReceipt.packageName}</span>
+                    </div>
+                    <div className="flex justify-between border-b border-slate-100 dark:border-slate-850 pb-1.5">
+                      <span>Donor Name</span>
+                      <span className="font-bold text-slate-950 dark:text-white">{successReceipt.donorName}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Sponsor Amount</span>
+                      <span className="font-black text-[#0f2b5c] dark:text-blue-400">₦{successReceipt.amount.toLocaleString()} NGN</span>
+                    </div>
+                  </div>
+                  
+                  <div className="p-4 bg-orange-500/10 border border-orange-500/20 text-orange-700 dark:text-orange-400 rounded-2xl text-xs text-left space-y-2">
+                    <p className="font-extrabold flex items-center gap-1.5">
+                      <ShieldAlert className="h-4 w-4" />
+                      Required Action:
+                    </p>
+                    <p className="leading-relaxed text-[11px]">
+                      To complete confirmation, please send a text message of the **amount** and your **name** to <strong className="font-bold text-slate-900 dark:text-white">09033675852</strong>.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-2 pt-2">
+                      <a 
+                        href={`https://wa.me/2349033675852?text=Hello%20NDSIA,%20I%20just%20transferred%20%E2%82%A6${successReceipt.amount.toLocaleString()}%20for%20the%20${encodeURIComponent(successReceipt.packageName)}%20under%20the%20name%20${encodeURIComponent(successReceipt.donorName)}.%20Please%20confirm%20receipt.`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-grow text-center text-[10px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-lg transition-colors cursor-pointer"
+                      >
+                        Confirm via WhatsApp
+                      </a>
+                      <a 
+                        href={`sms:+2349033675852?body=Hello%20NDSIA,%20I%20just%20transferred%20%E2%82%A6${successReceipt.amount.toLocaleString()}%20for%20the%20${encodeURIComponent(successReceipt.packageName)}%20under%20the%20name%20${encodeURIComponent(successReceipt.donorName)}.%20Please%20confirm%20receipt.`}
+                        className="flex-grow text-center text-[10px] bg-[#0f2b5c] hover:bg-[#0a1d3f] text-white font-bold py-2 rounded-lg transition-colors cursor-pointer"
+                      >
+                        Confirm via SMS
+                      </a>
+                    </div>
+                  </div>
 
-                <div className="space-y-4">
+                  <button
+                    onClick={() => setSuccessReceipt(null)}
+                    className="text-xs font-bold text-[#0f2b5c] dark:text-blue-400 underline pt-1 cursor-pointer"
+                  >
+                    Sponsor Another Package
+                  </button>
+                </motion.div>
+              ) : (
+                <form key="form" onSubmit={handleFormSubmit} className="space-y-5">
+                  
+                  {/* Selected Package Details */}
                   <div>
-                    <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Full Name</label>
-                    <input
-                      type="text"
-                      required
-                      value={donorName}
-                      onChange={(e) => setDonorName(e.target.value)}
-                      placeholder="Jane Doe"
-                      className="w-full text-sm p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                    />
+                    <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Selected Sponsorship</label>
+                    <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-xl font-bold text-sm text-slate-800 dark:text-slate-250">
+                      {selectedPackage ? (
+                        <span className="text-slate-950 dark:text-white">{selectedPackage.name} (₦{selectedPackage.price.toLocaleString()})</span>
+                      ) : customAmount ? (
+                        <span className="text-slate-950 dark:text-white">Custom Support (₦{parseFloat(customAmount).toLocaleString()})</span>
+                      ) : (
+                        <span className="text-slate-400 text-xs">None selected (Select a tier card on the left)</span>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Email Address</label>
-                    <input
-                      type="email"
-                      required
-                      value={donorEmail}
-                      onChange={(e) => setDonorEmail(e.target.value)}
-                      placeholder="jane@foundation.org"
-                      className="w-full text-sm p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
-                    />
-                  </div>
-                </div>
 
-                {errorMessage && (
-                  <div className="p-3 text-xs bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 rounded-xl font-medium">
-                    {errorMessage}
-                  </div>
-                )}
+                  {/* Bank Accounts Section */}
+                  <div className="space-y-3">
+                    <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">
+                      Send Funds to Local Bank Account
+                    </label>
+                    
+                    <div className="space-y-2">
+                      {/* Account 1 */}
+                      <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl space-y-1 relative">
+                        <div className="flex justify-between items-start">
+                          <span className="text-[9px] font-black uppercase text-emerald-650 tracking-wider">United Bank For Africa (UBA)</span>
+                          <button 
+                            type="button"
+                            onClick={() => handleCopy('6210662009')}
+                            className="text-[10px] font-bold text-[#0f2b5c] dark:text-blue-400 flex items-center gap-1 hover:underline cursor-pointer"
+                          >
+                            {copiedText === '6210662009' ? 'Copied!' : 'Copy No'}
+                          </button>
+                        </div>
+                        <p className="text-base font-black text-slate-950 dark:text-white font-mono tracking-wider">6210662009</p>
+                        <p className="text-[10px] text-slate-450 font-bold">Account Name: CAM-RSRVD</p>
+                      </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting || getActiveAmount() <= 0}
-                  className="w-full py-4 bg-[#ea580c] hover:bg-[#c2410c] disabled:bg-slate-350 dark:disabled:bg-slate-800 text-white rounded-xl text-base font-bold transition-all shadow-md shadow-orange-500/10 active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  {isSubmitting ? 'Opening Secure Checkout...' : (
-                    <>
-                      Proceed to Payment (₦{getActiveAmount().toLocaleString()})
-                      <Heart className="h-4.5 w-4.5 fill-white animate-pulse" />
-                    </>
+                      {/* Account 2 */}
+                      <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl space-y-1 relative">
+                        <div className="flex justify-between items-start">
+                          <span className="text-[9px] font-black uppercase text-emerald-650 tracking-wider">Parallex Bank</span>
+                          <button 
+                            type="button"
+                            onClick={() => handleCopy('6005914013')}
+                            className="text-[10px] font-bold text-[#0f2b5c] dark:text-blue-400 flex items-center gap-1 hover:underline cursor-pointer"
+                          >
+                            {copiedText === '6005914013' ? 'Copied!' : 'Copy No'}
+                          </button>
+                        </div>
+                        <p className="text-base font-black text-slate-950 dark:text-white font-mono tracking-wider">6005914013</p>
+                        <p className="text-[10px] text-slate-450 font-bold">Account Name: CAM-RSRVD</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Donor Details Fields */}
+                  <div className="space-y-4 pt-1">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Funder Full Name</label>
+                      <input
+                        type="text"
+                        required
+                        value={donorName}
+                        onChange={(e) => setDonorName(e.target.value)}
+                        placeholder="Jane Doe"
+                        className="w-full text-sm p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5">Email Address</label>
+                      <input
+                        type="email"
+                        required
+                        value={donorEmail}
+                        onChange={(e) => setDonorEmail(e.target.value)}
+                        placeholder="jane@foundation.org"
+                        className="w-full text-sm p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-800 dark:text-slate-100"
+                      />
+                    </div>
+                  </div>
+
+                  {errorMessage && (
+                    <div className="p-3 text-xs bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 rounded-xl font-medium">
+                      {errorMessage}
+                    </div>
                   )}
-                </button>
-                
-                <div className="flex gap-2 items-start justify-center text-[10px] text-slate-400">
-                  <ShieldAlert className="h-4 w-4 text-emerald-500 mt-0.5 flex-shrink-0" />
-                  <span>Secure 256-bit encrypted checkout powered by Kora Payments.</span>
-                </div>
-              </form>
-            )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || getActiveAmount() <= 0}
+                    className="w-full py-4 bg-[#ea580c] hover:bg-[#c2410c] disabled:bg-slate-350 dark:disabled:bg-slate-800 text-white rounded-xl text-base font-bold transition-all shadow-md shadow-orange-500/10 active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    {isSubmitting ? 'Registering Transfer...' : (
+                      <>
+                        I Have Made the Transfer (₦{getActiveAmount().toLocaleString()})
+                        <Heart className="h-4.5 w-4.5 fill-white animate-pulse" />
+                      </>
+                    )}
+                  </button>
+                  
+                  <div className="p-3.5 bg-orange-550/10 border border-orange-500/20 text-orange-700 dark:text-orange-400 rounded-2xl text-[10.5px] leading-relaxed">
+                    <p className="font-extrabold flex items-center gap-1 mb-1">
+                      <ShieldAlert className="h-3.5 w-3.5 flex-shrink-0" />
+                      Confirmation Notice:
+                    </p>
+                    Once payment is sent, please send a text of the **amount** and your **name** to <strong className="font-black text-slate-950 dark:text-white">09033675852</strong> for confirmation of received funds.
+                  </div>
+                </form>
+              )}
+            </AnimatePresence>
 
           </div>
         </div>
