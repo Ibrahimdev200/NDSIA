@@ -536,7 +536,11 @@ export default function HomePage() {
                 key={partner.id} 
                 className="flex items-center gap-2 p-4 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow"
               >
-                <span className="text-3xl filter saturate-50 hover:saturate-100 transition-all">{partner.logoUrl}</span>
+                {partner.logoUrl.startsWith('/') || partner.logoUrl.startsWith('http') ? (
+                  <img src={partner.logoUrl} alt={partner.name} className="h-8 w-auto object-contain" />
+                ) : (
+                  <span className="text-3xl filter saturate-50 hover:saturate-100 transition-all">{partner.logoUrl}</span>
+                )}
                 <span className="font-bold text-sm text-slate-700 dark:text-slate-350">{partner.name}</span>
               </div>
             ))}

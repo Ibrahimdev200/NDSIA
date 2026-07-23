@@ -113,8 +113,12 @@ export default function PartnersPage() {
               key={partner.id}
               className="p-6 bg-slate-50 dark:bg-slate-950 border border-slate-150/50 dark:border-slate-800/60 rounded-3xl text-center space-y-4 flex flex-col items-center justify-center hover:shadow-lg transition-shadow min-h-[160px]"
             >
-              <span className="text-4xl bg-white dark:bg-slate-900 w-16 h-16 rounded-2xl flex items-center justify-center shadow-sm border border-slate-200/40">
-                {partner.logoUrl}
+              <span className="text-4xl bg-white dark:bg-slate-900 w-16 h-16 rounded-2xl flex items-center justify-center shadow-sm border border-slate-200/40 p-2">
+                {partner.logoUrl.startsWith('/') || partner.logoUrl.startsWith('http') ? (
+                  <img src={partner.logoUrl} alt={partner.name} className="max-h-full max-w-full object-contain" />
+                ) : (
+                  partner.logoUrl
+                )}
               </span>
               <div>
                 <h4 className="font-extrabold text-sm text-slate-950 dark:text-white leading-tight">{partner.name}</h4>

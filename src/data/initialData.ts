@@ -197,7 +197,8 @@ export const initialPartners: Partner[] = [
   { id: 'part-1', name: 'Bayelsa State Tech Hub', logoUrl: '💼', type: 'technical' },
   { id: 'part-2', name: 'Global Empowerment Trust', logoUrl: '🌍', type: 'sponsor' },
   { id: 'part-3', name: 'Niger Delta Development Foundation', logoUrl: '🌱', type: 'community' },
-  { id: 'part-4', name: 'CloudNet Infrastructure', logoUrl: '☁️', type: 'technical' }
+  { id: 'part-4', name: 'CloudNet Infrastructure', logoUrl: '☁️', type: 'technical' },
+  { id: 'part-5', name: 'CampusGrab', logoUrl: '/campusgrab.png', type: 'sponsor' }
 ];
 
 export const initialReports: Report[] = [
