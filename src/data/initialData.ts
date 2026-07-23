@@ -230,25 +230,18 @@ export const initialReports: Report[] = [
 
 export const initialTeam: TeamMember[] = [
   {
-    id: 'team-1',
-    name: 'Dr. Julius Alagoa',
-    role: 'Founder & Executive Director',
-    bio: 'Academic and community leader with 15+ years of experience advocating for educational development in the Niger Delta.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80'
+    id: 'team-ombu',
+    name: 'Vice Admiral Victor Ombu (Rtd)',
+    role: 'Originator (Opu-Nembe Youth Computer Training) & Chairman, Peace Steering Committee of Opu-Nembe',
+    bio: 'Pioneer of the initial Opu-Nembe Youth Computer Training. Led the peace steering committee that established the foundational digital training pathways for Nembe youths.',
+    image: '/victor-ombu.jpg'
   },
   {
-    id: 'team-2',
-    name: 'Precious Alagoa',
-    role: 'Program Director & Co-Founder',
-    bio: 'Software engineer and educator. Passionate about bringing world-class tech training to remote communities.',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'team-3',
-    name: 'Tari Ella',
-    role: 'Lead Technical Instructor',
-    bio: 'Former NDSIA graduate, now a professional frontend developer returning as an instructor to guide the next generation.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80'
+    id: 'team-quadri',
+    name: 'Quadri Damilare Ibrahim',
+    role: 'Facilitator & Head of NDSIA',
+    bio: 'Lead coordinator, developer, and chief facilitator directing operations, core curriculum, and developer tracks at the Academy.',
+    image: '/quadri-ibrahim.jpg'
   }
 ];
 

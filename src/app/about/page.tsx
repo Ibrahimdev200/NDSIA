@@ -98,13 +98,13 @@ export default function AboutPage() {
           <span className="text-xs font-bold text-[#ea580c] dark:text-orange-400 uppercase tracking-widest bg-orange-500/10 px-3 py-1 rounded-full">
             Our Leaders
           </span>
-          <h2 className="text-3xl font-extrabold text-[#0f2b5c] dark:text-white tracking-tight">Meet the NDSIA Board & Instructors</h2>
+          <h2 className="text-3xl font-extrabold text-[#0f2b5c] dark:text-white tracking-tight">Meet the NDSIA Board</h2>
           <p className="text-slate-600 dark:text-slate-400 font-medium">
-            The passionate administrators and software developers bringing tech literacy to Nembe.
+            The passionate leader and administrators bringing tech literacy to Nembe.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 max-w-4xl mx-auto gap-8">
           {team.map((member) => (
             <div 
               key={member.id}
