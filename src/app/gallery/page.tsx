@@ -11,7 +11,26 @@ const defaultPhotos = [
   { id: '3', title: 'Independent Solar Energy Array', category: 'infrastructure', url: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80', description: 'Solar integration backup to prevent blackouts.' },
   { id: '4', title: 'Collaboration Workshop Session', category: 'workshops', url: '/group-students-1.jpg', description: 'Graduates building portfolios in groups.' },
   { id: '5', title: 'Group Practice Lab Work', category: 'workshops', url: '/group-students-2.jpg', description: 'Sharing workstation practices and assignments.' },
-  { id: '6', title: 'Cohort 4 Certificate Distribution', category: 'graduation', url: '/graduates-backdrop-1.jpg', description: 'Top placement students receiving special honors.' }
+  { id: '6', title: 'Cohort 4 Certificate Distribution', category: 'graduation', url: '/graduates-backdrop-1.jpg', description: 'Top placement students receiving special honors.' },
+  { id: '7', title: 'Hardware Orientation Class', category: 'classrooms', url: '/gallery-hardware-class.jpg', description: 'Students learning about computer hardware component assembly.' },
+  { id: '8', title: 'Nembe History Presentation', category: 'workshops', url: '/gallery-nembe-presentation.jpg', description: 'A student presenting their research on the Chronicles of Nembe Traditional Pools.' },
+  { id: '9', title: 'Active Classroom Session', category: 'classrooms', url: '/gallery-active-classroom.jpg', description: 'A full classroom of students working on their individual workstations.' },
+  { id: '10', title: 'Cabling and Power Setup', category: 'infrastructure', url: '/gallery-cabling-setup.jpg', description: 'Students setting up UPS and power cabling backups for the computers.' },
+  { id: '11', title: 'Student Group Portrait', category: 'workshops', url: '/gallery-group-portrait.jpg', description: 'A group of students posing in front of the lab green wall.' },
+  { id: '12', title: 'Office Work Orientation', category: 'workshops', url: '/gallery-office-training.jpg', description: 'Students practicing printing and office coordination tasks.' },
+  { id: '13', title: 'Class Presentation Group', category: 'workshops', url: '/gallery-projection-group.jpg', description: 'A student group presenting their project using the laboratory projector.' },
+  { id: '14', title: 'Academic Excellence Award', category: 'graduation', url: '/gallery-award-presentation.jpg', description: 'Clarkson Faithful receiving the Best Female Academic Excellence Award.' },
+  { id: '15', title: 'Outdoor Cohort Group', category: 'workshops', url: '/gallery-outdoor-group.jpg', description: 'Students and facilitators gathered outside the computer laboratory.' },
+  { id: '16', title: 'Team and Student Cohort', category: 'workshops', url: '/gallery-facilitators-students.jpg', description: 'Lead facilitator Quadri Ibrahim with students in the training lab.' },
+  { id: '17', title: 'Batch 4 Student Portrait', category: 'workshops', url: '/gallery-cohort-portrait.jpg', description: 'A group photo of students and instructors outside the facility.' },
+  { id: '18', title: 'Computer Monitor Assembly', category: 'classrooms', url: '/gallery-monitor-assembly.jpg', description: 'Students and instructors assembling and wiring desktop monitors.' },
+  { id: '19', title: 'Traditional Graduation Ceremony', category: 'graduation', url: '/gallery-traditional-celebration.jpg', description: 'Graduates celebrating in traditional Nembe attire after the ceremony.' },
+  { id: '20', title: 'Best Female Academic Excellence Award', category: 'graduation', url: '/gallery-award-recipient.jpg', description: 'Ogolo Precious receiving the award for outstanding academic performance.' },
+  { id: '21', title: 'Batch 4 Graduation Ceremony', category: 'graduation', url: '/gallery-cohort-graduation.jpg', description: 'Over 35 students celebrating their success after months of training.' },
+  { id: '22', title: 'CBT Examination Room', category: 'classrooms', url: '/gallery-cbt-exam.jpg', description: 'A look inside the classroom set up for the computer training CBT exam.' },
+  { id: '23', title: 'Active CBT Examination Hall', category: 'classrooms', url: '/gallery-exam-hall.jpg', description: 'Computers prepared for the terminal digital literacy examination.' },
+  { id: '24', title: 'Hardware Wiring Discussion', category: 'classrooms', url: '/gallery-hardware-discussion.jpg', description: 'Students and facilitators discussing workstation monitor setups.' },
+  { id: '25', title: 'Nembe Culture Slide Presentation', category: 'workshops', url: '/gallery-slide-presentation.jpg', description: 'A presentation on the geography, history and food culture of Nembe.' }
 ];
 
 export default function GalleryPage() {
